@@ -1,0 +1,88 @@
+/*
+* Disclaimer: Made in 3 minutes while I was bored at lecture
+*/
+/* General Styles */
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f7f7f7;
+    color: #333333;
+  }
+  
+  a {
+    color: #2c82c9;
+    text-decoration: none;
+  }
+  
+  /* Header Styles */
+  header {
+    background-color: #2c82c9;
+    color: #ffffff;
+    padding: 20px;
+  }
+  
+  header h1 {
+    font-size: 48px;
+    margin: 0;
+  }
+  
+  header h2 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  /* Navigation Styles */
+  nav {
+    background-color: #ffffff;
+    padding: 20px;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  nav a {
+    color: #333333;
+    font-size: 18px;
+    text-decoration: none;
+  }
+  
+  nav a:hover {
+    color: #2c82c9;
+  }
+  
+  /* Main Content Styles */
+  main {
+    padding: 20px;
+  }
+  
+  main h1 {
+    font-size: 36px;
+    margin: 0 0 20px 0;
+  }
+  
+  main p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+  }
+  
+  /* Footer Styles */
+  footer {
+    background-color: #333333;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  footer p {
+    font-size: 18px;
+    margin: 0;
+  }
+  
