@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "csv": "^6.2.10"
+    "csv-parse": "^5.3.8"
   }
 }
