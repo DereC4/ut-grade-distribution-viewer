@@ -9,10 +9,20 @@
     <script src='main.js'></script>
 </head>
 <body>
+    <div class="bg"></div>
+    <div class="bg-text">
     <label for="fname">Class Name (Like "ARH 301 INTRODUCTION TO VISUAL ARTS"):</label>
     <input type="text" id="fname" name="fname"><br><br>
-    <label for="lname">School Year (Work in progress):</label>
-    <input type="text" id="lname" name="lname"><br><br>
-    <input type="submit" value="Submit">
+    <form>
+        <label for="dropdown">Semester (work in progress):</label>
+        <select id="dropdown" name="dropdown">
+          <option value="option1">Fall 2022</option>
+          <option value="option2">Spring 2022</option>
+          <option value="option3">Fall 2021</option>
+        </select>
+        <br><br>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
 </body>
 </html>
