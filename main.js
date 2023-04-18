@@ -24,7 +24,7 @@ function parseName() {
 }
 
 async function PapaParse(department, num, name) {
-    const fileInput = await fetch('https://www.mediafire.com/file/s4q2j5s1ual8uy3/2022+Fall.json', {
+    const fileInput = await fetch('https://github.com/DereC4/ut-grade-viewer/blob/master/data/2022%20Fall.json', {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
