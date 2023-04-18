@@ -24,8 +24,14 @@ function parseName() {
 }
 
 async function PapaParse(department, num, name) {
-    const fileInput = await fetch('https://download1528.mediafire.com/2urg1chkmmyg2MXF2FeuX_gnvdJxMBwuNnNr-SUCCZLv1FOIOTH9Y6U4FR-w24CtcqzcHFxHmJdUGz84Nrc-yDdHzQ/5y6373ecv458os9/Fall2022.csv');
-
+    const fileInput = await fetch('https://www.mediafire.com/file/s4q2j5s1ual8uy3/2022+Fall.json', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+        },
+    })
+       .then(response => response.json())
+       .then(response => console.log(JSON.stringify(response)))
     console.log(fileInput);
     let gradeObj = [];
     // PapaParse.parse(
