@@ -23,15 +23,17 @@ function parseName() {
     PapaParse(department, classNum, className);
 }
 
-function PapaParse(department, num, name) {
-    let classData = '';
-    fetch('/data/2022 Fall.json')
+async function PapaParse(department, num, name) {
+    let cData = '';
+    await fetch('/data/2022 Fall.json')
     .then(res => res.json())
     .then(data => {
-      obj = data;
+        cData = data;
      })
     .then(() => {
-      console.log(obj);
+      console.log(cData);
      });
+    const selectedClass = cData.filter(cData => cData["Course Title"] == name);
+    console.log(selectedClass);
    
 }
