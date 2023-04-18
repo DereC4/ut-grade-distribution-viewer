@@ -20,9 +20,15 @@ function parseName() {
         return;
     }
     console.log(department, classNum, className);
-    searchData(department, classNum, className);
+    PapaParse(department, classNum, className);
 }
 
-function searchData(department, num, name) {
-    
+async function PapaParse(department, num, name) {
+    const fileInput = await fetch('https://download1528.mediafire.com/2urg1chkmmyg2MXF2FeuX_gnvdJxMBwuNnNr-SUCCZLv1FOIOTH9Y6U4FR-w24CtcqzcHFxHmJdUGz84Nrc-yDdHzQ/5y6373ecv458os9/Fall2022.csv');
+
+    console.log(fileInput);
+    let gradeObj = [];
+    // PapaParse.parse(
+
+    // );
 }
