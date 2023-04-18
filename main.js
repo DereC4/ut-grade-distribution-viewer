@@ -23,16 +23,10 @@ function parseName() {
     PapaParse(department, classNum, className);
 }
 
-async function PapaParse(department, num, name) {
-    const fileInput = await fetch('https://github.com/DereC4/ut-grade-viewer/blob/master/data/2022%20Fall.json', {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-        },
-    })
-       .then(response => response.json())
-       .then(response => console.log(JSON.stringify(response)))
-    console.log(fileInput);
+function PapaParse(department, num, name) {
+    fetch('https://github.com/DereC4/ut-grade-viewer/blob/master/data/2022%20Fall.json')
+   .then(response => response.text())
+   .then(text => console.log(text))
     let gradeObj = [];
     // PapaParse.parse(
 
