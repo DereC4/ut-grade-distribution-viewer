@@ -4,8 +4,8 @@
 /* General Styles */
 body {
     font-family: 'Helvetica Neue', sans-serif;
-    background-color: #f7f7f7;
-    color: #333333;
+    background: rgb(27,26,42);
+    background: linear-gradient(90deg, rgba(27,26,42,1) 0%, rgba(61,87,92,1) 100%);
   }
   
   a {
@@ -75,7 +75,7 @@ body {
   
   /* Footer Styles */
   footer {
-    background-color: #333333;
+    background-color: #2e2d2d;
     color: #ffffff;
     padding: 20px;
     text-align: center;
@@ -110,7 +110,7 @@ body {
   
   /* Position text in the middle of the page/image */
   .bg-text {
-    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0,0,0, 0.4); /* opacity/see-through */
     color: white;
     font-weight: bold;

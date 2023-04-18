@@ -33,7 +33,7 @@ async function PapaParse(department, num, name) {
     .then(() => {
       console.log(cData);
      });
-    const selectedClass = cData.filter(cData => cData["Course Title"] == name);
+    const selectedClass = cData.filter(cData => cData["Course Title"].includes(name.toUpperCase()));
     console.log(selectedClass);
    
 }

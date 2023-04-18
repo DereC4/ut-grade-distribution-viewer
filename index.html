@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>UT Grade Viewer</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"
-      integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ=="
-      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>UT Grade Viewer</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"
+    integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
+
 <body>
-    <div class="bg"></div>
-    <div class="bg-text">
+  <div class="bg"></div>
+  <div class="bg-text">
+    <p>
+      Keep course names as close to the 
+      <a href="https://registrar.utexas.edu/schedules">official course name</a> 
+      as possible
+    </p>
     <!-- Data is separated into course number, course prefi;x, and course name-->
     <label for="courseField">Course Field (Ex: "MUS"):</label>
     <input type="text" id="courseField" name="fname"><br><br>
     <label for="courseNum">Course Number (Ex: "307"):</label>
     <input type="text" id="courseNum" name="fname"><br><br>
-    <label for="courseName">Course Name (Ex: "JAZZ APPRECIATION-WB"):</label>
+    <label for="courseName">Course Name (Ex: "Jazz Appreciation"):</label>
     <input type="text" id="courseName" name="fname"><br><br>
+    <label for="courseInstructor">Instructor (Optional)</label>
+    <input type="text" id="courseInstructor" name="fname"><br><br>
     <form>
-        <label for="dropdown">Semester (work in progress):</label>
-        <select id="dropdown" name="dropdown">
-          <option value="option1">Fall 2022</option>
-          <option value="option2">Spring 2022</option>
-          <option value="option3">Fall 2021</option>
-        </select>
-        <br><br>
-      </form>
-      <button type="submit" id = "subBut">Submit</button>
-    </div>
-    <script src='main.js'></script>
+      <label for="dropdown">Semester (work in progress):</label>
+      <select id="dropdown" name="dropdown">
+        <option value="option1">Fall 2022</option>
+        <option value="option2">Spring 2022</option>
+        <option value="option3">Fall 2021</option>
+      </select>
+      <br><br>
+    </form>
+    <button type="submit" id="subBut">Submit</button>
+  </div>
+  <script src='main.js'></script>
 </body>
+
 </html>
