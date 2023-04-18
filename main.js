@@ -24,11 +24,14 @@ function parseName() {
 }
 
 function PapaParse(department, num, name) {
-    fetch('https://github.com/DereC4/ut-grade-viewer/blob/master/data/2022%20Fall.json')
-   .then(response => response.text())
-   .then(text => console.log(text))
-    let gradeObj = [];
-    // PapaParse.parse(
-
-    // );
+    let classData = '';
+    fetch('/data/2022 Fall.json')
+    .then(res => res.json())
+    .then(data => {
+      obj = data;
+     })
+    .then(() => {
+      console.log(obj);
+     });
+   
 }
