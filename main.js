@@ -5,22 +5,22 @@ function parseName() {
     let classNum = '';
     let department = '';
     className = document.getElementById('courseName').value;
-    classNum = document.getElementById('courseNum').value;
+    // classNum = document.getElementById('courseNum').value;
     department = document.getElementById('courseField').value;
     if(department.length > 3) {
         alert("Invalid Department");
         return;
     } 
-    if(className == '' && classNum == '' && department == '') {
+    if(className == '' && department == '') {
         alert("At least fill out the form...");
         return;
     }
-    if(className == '' || classNum == '' || department == '') {
+    if(className == '' || department == '') {
         alert("Missing something?");
         return;
     }
-    console.log(department, classNum, className);
-    PapaParse(department, classNum, className);
+    console.log(department, 0, className);
+    PapaParse(department, 0, className);
 }
 
 async function PapaParse(department, num, name) {
