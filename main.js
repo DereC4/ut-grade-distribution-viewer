@@ -11,12 +11,11 @@ function parseName() {
         alert("Invalid Department");
         return;
     } 
-    if(className == '' && department == '') {
-        alert("At least fill out the form...");
-        return;
-    }
+    // if(className == '' && department == '') {
+    //     alert("At least fill out the form...");
+    //     return;
+    // }
     if(className == '' || department == '') {
-        alert("Missing something?");
         return;
     }
     console.log(department, 0, className);
