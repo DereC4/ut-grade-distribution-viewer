@@ -25,7 +25,7 @@ function parseName() {
 
 async function PapaParse(department, num, name) {
     let cData = '';
-    await fetch('/data/2022 Fall.json')
+    await fetch('https://derec4.github.io/UT-Grade-Dist/2022%20Fall.json')
     .then(res => res.json())
     .then(data => {
         cData = data;
@@ -33,6 +33,14 @@ async function PapaParse(department, num, name) {
     .then(() => {
       console.log(cData);
      });
+    // await fetch('/data/2022 Fall.json')
+    // .then(res => res.json())
+    // .then(data => {
+    //     cData = data;
+    //  })
+    // .then(() => {
+    //   console.log(cData);
+    //  });
     const selectedClass = cData.filter(cData => cData["Course Title"].includes(name.toUpperCase()));
     console.log(selectedClass);
    
