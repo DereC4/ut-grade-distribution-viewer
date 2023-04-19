@@ -59,7 +59,11 @@ async function PapaParse(department, num, name) {
         'Other': 0
     };
     for(i in selectedClass) {
-        console.log(selectedClass[i]["Letter Grade"]);
-        console.log(selectedClass[i]["Count of letter grade"]);
+        let letterGrade = selectedClass[i]["Letter Grade"];
+        let cnt = selectedClass[i]["Count of letter grade"]
+        gradeDist[letterGrade] += cnt;
+        // console.log(selectedClass[i]["Letter Grade"]);
+        // console.log(selectedClass[i]["Count of letter grade"]);
     }
+    console.log(gradeDist);
 }
