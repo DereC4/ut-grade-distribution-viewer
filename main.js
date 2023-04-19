@@ -1,15 +1,4 @@
 const submitButton = document.getElementById('subBut');
-let gradeDist = { 
-    "A": 0,
-    'A-': 0,
-    'B+': 0,
-    'B': 0,
-    'B-': 0,
-    'C+': 0,
-    'C': 0,
-    'C-': 0,
-    'Other': 0
-};
 submitButton.addEventListener("click", parseName);
 function parseName() {
     let className = '';
@@ -54,4 +43,15 @@ async function PapaParse(department, num, name) {
     //  });
     const selectedClass = cData.filter(cData => cData["Course Title"].includes(name.toUpperCase()));
     console.log(selectedClass);
+    let gradeDist = { 
+        "A": 0,
+        'A-': 0,
+        'B+': 0,
+        'B': 0,
+        'B-': 0,
+        'C+': 0,
+        'C': 0,
+        'C-': 0,
+        'Other': 0
+    };
 }
