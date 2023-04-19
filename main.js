@@ -54,4 +54,7 @@ async function PapaParse(department, num, name) {
         'C-': 0,
         'Other': 0
     };
+    for(i in selectedClass) {
+        console.log(selectedClass[i]["Letter Grade"]);
+    }
 }
