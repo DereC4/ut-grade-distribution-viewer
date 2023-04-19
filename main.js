@@ -8,14 +8,15 @@ function parseName() {
     // classNum = document.getElementById('courseNum').value;
     department = document.getElementById('courseField').value;
     if(department.length > 3) {
-        alert("Invalid Department");
+        alert("Invalid Prefix");
         return;
     } 
-    // if(className == '' && department == '') {
-    //     alert("At least fill out the form...");
-    //     return;
-    // }
+    if(className == '' && department == '') {
+        alert("At least fill out the form...");
+        return;
+    }
     if(className == '' || department == '') {
+        
         return;
     }
     console.log(department, 0, className);
@@ -40,7 +41,12 @@ async function PapaParse(department, num, name) {
     // .then(() => {
     //   console.log(cData);
     //  });
-    const selectedClass = cData.filter(cData => cData["Course Title"].includes(name.toUpperCase()));
+    if(cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase())).length == 0) {
+        alert("Invalid Prefix");
+        return;
+    }
+    const selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase()))
+                               .filter(cData => cData["Course Title"].includes(name.toUpperCase()));
     console.log(selectedClass);
     let gradeDist = { 
         "A": 0,
