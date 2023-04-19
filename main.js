@@ -52,9 +52,14 @@ async function PapaParse(department, num, name) {
         'C+': 0,
         'C': 0,
         'C-': 0,
+        'D+': 0,
+        'D': 0,
+        'D-': 0,
+        'F': 0,
         'Other': 0
     };
     for(i in selectedClass) {
         console.log(selectedClass[i]["Letter Grade"]);
+        console.log(selectedClass[i]["Count of letter grade"]);
     }
 }
