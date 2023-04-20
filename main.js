@@ -1,5 +1,12 @@
 const submitButton = document.getElementById('subBut');
 submitButton.addEventListener("click", parseName);
+var barChart = document.querySelector('#grades');
+if(barChart.getAttribute('value') == 'invisible'){
+    barChart.style.display = 'none';
+}
+/*
+ Parse the name
+*/
 function parseName() {
     let className = '';
     let classNum = '';
@@ -16,7 +23,6 @@ function parseName() {
         return;
     }
     if(className == '' || department == '') {
-        
         return;
     }
     console.log(department, 0, className);
@@ -71,4 +77,11 @@ async function PapaParse(department, num, name) {
         // console.log(selectedClass[i]["Count of letter grade"]);
     }
     console.log(gradeDist);
+    barChart.style.display = '';
 }
+
+const myChart = new Chart("myChart", {
+    type: "bar",
+    data: {},
+    options: {}
+  });
