@@ -103,7 +103,9 @@ function loadChart(gradeDist) {
         datasets: [{
             label: 'Grade Distribution',
             data: Object.values(gradeDist),
-            borderWidth: 1
+            borderWidth: 1,
+            // borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
         }]
         },
         options: {

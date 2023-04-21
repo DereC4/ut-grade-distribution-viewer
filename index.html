@@ -27,12 +27,13 @@
 <body>
   <div class="bg"></div>
   <div class="bg-text">
-    <p>In lecture one day I noticed the other sites were using outdated data sets from <2020, so I made my own. Enjoy!</p>
+    <p>Noticed other grade sites used outdated data, so I made my own. Enjoy!</p>
     <p>
       Keep course names as close to the
       <a href="https://registrar.utexas.edu/schedules">official course name</a>
       as possible
     </p>
+    <br>
     <form action="">
     
       <!-- Data is separated into course number, course prefi;x, and course name-->
@@ -45,7 +46,8 @@
       <label for="courseInstructor">Instructor (Optional)</label>
       <input type="text" id="courseInstructor" name="fname"><br><br>
       <button type="button" id="subBut">Submit</button><br><br>
-    
+      
+      <!-- Dropdown menu for semester selection -->
       <form>
         <label for="dropdown">Semester (work in progress):</label>
         <select id="dropdown" name="dropdown">
@@ -56,7 +58,7 @@
         <br><br>
       </form>
     </form>
-    <div id="grades" value="invisible">
+    <div id="grades" value="invisible" class="center" style="width:800px; margin:0 auto;">
       <!--Bar graph stuff-->
       <canvas id="gradeBar" style="width:100%;max-width:700px"></canvas>
     </div>
