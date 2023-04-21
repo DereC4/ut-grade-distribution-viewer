@@ -80,7 +80,7 @@ async function PapaParse(department, num, name) {
     barChart.style.display = '';
 }
 
-const myChart = new Chart("myChart", {
+const myChart = new Chart("gradeBar", {
     type: "bar",
     data: {},
     options: {}
