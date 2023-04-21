@@ -81,6 +81,9 @@ async function PapaParse(department, num, name) {
     loadChart(gradeDist);
     barChart.style.display = '';
 }
+var randomColorGenerator = function () { 
+    return '#' + (Math.random().toString(16) + '0000000').slice(2, 8); 
+};
 
 function loadChart(gradeDist) {
     const ctx = document.getElementById("gradeBar");
@@ -105,7 +108,7 @@ function loadChart(gradeDist) {
             data: Object.values(gradeDist),
             borderWidth: 1,
             // borderColor: '#36A2EB',
-            backgroundColor: '#9BD0F5',
+            backgroundColor: ['rgb(98, 244, 54)', 'rgb(142, 224, 0)', 'rgb(169, 202, 0)', 'rgb(188, 181, 0)', 'rgb(201, 159, 0)', 'rgb(208, 137, 0)', 'rgb(211, 114, 0)', 'rgb(208, 93, 21)', 'rgb(201, 73, 41)', 'rgb(190, 54, 54)'],
         }]
         },
         options: {
