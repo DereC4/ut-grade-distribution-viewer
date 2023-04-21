@@ -1,9 +1,11 @@
 const submitButton = document.getElementById('subBut');
 submitButton.addEventListener("click", parseName);
-var barChart = document.querySelector('#grades');
-if(barChart.getAttribute('value') == 'invisible'){
-    barChart.style.display = 'none';
+var chartDiv = document.querySelector('#grades');
+if(chartDiv.getAttribute('value') == 'invisible'){
+    chartDiv.style.display = 'none';
 }
+var gradeChart;
+const ctx = document.getElementById("gradeBar");
 
 /*
  Parse the name
@@ -78,16 +80,38 @@ async function PapaParse(department, num, name) {
         // console.log(selectedClass[i]["Count of letter grade"]);
     }
     console.log(gradeDist);
-    loadChart(gradeDist);
-    barChart.style.display = '';
+    if(gradeChart) {
+        gradeChart.config.data = {
+            labels: [           
+                'A',
+                'A-',
+                'B+',
+                'B',
+                'B-',
+                'C+',
+                'C',
+                'C-',
+                'D+',
+                'D',
+                'D-',
+                'F'],
+            datasets: [{
+                label: 'Grade Distribution',
+                data: Object.values(gradeDist),
+                borderWidth: 3,
+                // borderColor: '#36A2EB',
+                backgroundColor: ["rgb(98, 244, 54)", "rgb(129, 231, 10)", "rgb(151, 218, 0)", "rgb(168, 204, 0)", "rgb(181, 190, 0)", "rgb(191, 176, 0)", "rgb(199, 162, 0)", "rgb(205, 148, 0)", "rgb(209, 133, 0)", "rgb(211, 119, 0)", "rgb(210, 105, 0)", "rgb(208, 91, 23)", "rgb(204, 78, 36)", "rgb(198, 66, 46)", "rgb(190, 54, 54)", ""],
+            }]
+            };
+        gradeChart.update();
+    } else {
+        loadChart(gradeDist);
+        chartDiv.style.display = '';
+    }
 }
-var randomColorGenerator = function () { 
-    return '#' + (Math.random().toString(16) + '0000000').slice(2, 8); 
-};
 
 function loadChart(gradeDist) {
-    const ctx = document.getElementById("gradeBar");
-    new Chart(ctx, {
+    gradeChart = new Chart(ctx, {
         type: 'bar',
         data: {
         labels: [           
@@ -106,17 +130,26 @@ function loadChart(gradeDist) {
         datasets: [{
             label: 'Grade Distribution',
             data: Object.values(gradeDist),
-            borderWidth: 1,
-            // borderColor: '#36A2EB',
+            borderWidth: 3,
+            barThickness: 50,
             backgroundColor: ["rgb(98, 244, 54)", "rgb(129, 231, 10)", "rgb(151, 218, 0)", "rgb(168, 204, 0)", "rgb(181, 190, 0)", "rgb(191, 176, 0)", "rgb(199, 162, 0)", "rgb(205, 148, 0)", "rgb(209, 133, 0)", "rgb(211, 119, 0)", "rgb(210, 105, 0)", "rgb(208, 91, 23)", "rgb(204, 78, 36)", "rgb(198, 66, 46)", "rgb(190, 54, 54)", ""],
         }]
         },
         options: {
-        scales: {
-            y: {
-            beginAtZero: true
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                stacked: true,
+                grid: {
+                  display: true,
+                }
+              },
+              x: {
+                grid: {
+                  display: false
+                }
+              }
             }
-        }
         }
     });    
 }
