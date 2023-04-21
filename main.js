@@ -4,6 +4,7 @@ var barChart = document.querySelector('#grades');
 if(barChart.getAttribute('value') == 'invisible'){
     barChart.style.display = 'none';
 }
+
 /*
  Parse the name
 */
@@ -37,7 +38,7 @@ async function PapaParse(department, num, name) {
         cData = data;
      })
     .then(() => {
-      console.log(cData);
+    //   console.log(cData);
      });
     // await fetch('/data/2022 Fall.json')
     // .then(res => res.json())
@@ -77,11 +78,40 @@ async function PapaParse(department, num, name) {
         // console.log(selectedClass[i]["Count of letter grade"]);
     }
     console.log(gradeDist);
+    loadChart(gradeDist);
     barChart.style.display = '';
 }
 
-const myChart = new Chart("gradeBar", {
-    type: "bar",
-    data: {},
-    options: {}
-  });
+function loadChart(gradeDist) {
+    const ctx = document.getElementById("gradeBar");
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+        labels: [           
+            'A',
+            'A-',
+            'B+',
+            'B',
+            'B-',
+            'C+',
+            'C',
+            'C-',
+            'D+',
+            'D',
+            'D-',
+            'F'],
+        datasets: [{
+            label: 'Grade Distribution',
+            data: Object.values(gradeDist),
+            borderWidth: 1
+        }]
+        },
+        options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+        }
+    });    
+}
