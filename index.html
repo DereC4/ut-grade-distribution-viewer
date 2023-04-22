@@ -2,15 +2,6 @@
 <html>
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W7VZNW3G14"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-W7VZNW3G14');
-  </script>
   <meta charset='utf-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <title>UT Grade Viewer</title>
@@ -23,7 +14,15 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
   </script>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W7VZNW3G14"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-W7VZNW3G14');
+</script>
 <body>
   <div class="bg"></div>
   <div class="bg-text">
@@ -58,9 +57,9 @@
         <br><br>
       </form>
     </form>
-    <div class="chart-container" id="grades" value="invisible" class="center" style="position: relative; height:40vh; width:80vw">
+    <div class="chart-container" id="grades" value="invisible" style="position: relative; height:40vh; width:80vw">
       <!--Bar graph stuff-->
-      <canvas id="gradeBar"></canvas>
+      <canvas id="gradeBar" style="width:100%;height:100%;"></canvas>
     </div>
   </div>
   <script src='main.js'></script>
