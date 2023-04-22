@@ -77,8 +77,13 @@ main p {
 footer {
   background-color: #2e2d2d;
   color: #ffffff;
-  padding: 20px;
-  text-align: center;
+  padding: 10px;
+  position: absolute; 
+  bottom: 0; 
+  left: 0; 
+  width: 100%; 
+  text-align: left;
+  font-size: 13px;
 }
 
 footer p {
