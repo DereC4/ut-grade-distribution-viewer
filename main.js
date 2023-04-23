@@ -11,29 +11,27 @@ const ctx = document.getElementById("gradeBar");
  Parse the name
 */
 function parseName() {
-    let className = '';
-    let classNum = '';
-    let department = '';
-    className = document.getElementById('courseName').value;
-    // classNum = document.getElementById('courseNum').value;
-    department = document.getElementById('courseField').value;
-    if(department.length > 3) {
-        alert("Invalid Prefix");
-        return;
-    } 
-    if(className == '' && department == '') {
+    let className = document.getElementById('courseName').value;
+    let classNum = document.getElementById('courseNum').value;
+    let department = document.getElementById('courseField').value;
+    if(!className && !classNum && !department) {
         alert("At least fill out the form...");
         return;
     }
+    if(department.length != 3) {
+        alert("Invalid Department");
+        return;
+    } 
     if(className == '' || department == '') {
         return;
     }
-    console.log(department, 0, className);
-    PapaParse(department, 0, className);
+    console.log(department, classNum, className);
+    PapaParse(department, classNum, className);
 }
 
 async function PapaParse(department, num, name) {
     let cData = '';
+    // await fetch('https://derec4.github.io/UT-Grade-Dist/2022prefixes.json');
     await fetch('https://derec4.github.io/UT-Grade-Dist/2022%20Fall.json')
     .then(res => res.json())
     .then(data => {
@@ -42,20 +40,24 @@ async function PapaParse(department, num, name) {
     .then(() => {
     //   console.log(cData);
      });
-    // await fetch('/data/2022 Fall.json')
-    // .then(res => res.json())
-    // .then(data => {
-    //     cData = data;
-    //  })
-    // .then(() => {
-    //   console.log(cData);
-    //  });
+    
     if(cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase())).length == 0) {
         alert("Invalid Prefix");
         return;
+    }  
+    const selectedClass = '';
+    if(cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase()))
+            .filter(cData => cData["Course Number"].includes(num.toUpperCase))
+            .filter(cData => cData["Course Title"].includes(name.toUpperCase())).length == 0) {
+        // Possible that the class name was typed wrong; try again with just the course number
+        selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase()))
+                             .filter(cData => cData["Course Title"].includes(name.toUpperCase()));
+    } else {
+        selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase()))
+                             .filter(cData => cData["Course Number"].includes(num.toUpperCase))
+                             .filter(cData => cData["Course Title"].includes(name.toUpperCase()))
     }
-    const selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase()))
-                               .filter(cData => cData["Course Title"].includes(name.toUpperCase()));
+
     console.log(selectedClass);
     let gradeDist = { 
         "A": 0,
