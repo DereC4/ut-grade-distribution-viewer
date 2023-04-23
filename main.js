@@ -1,6 +1,7 @@
 const submitButton = document.getElementById('subBut');
 submitButton.addEventListener("click", parseName);
 var chartDiv = document.querySelector('#grades');
+var aboutDiv = document.querySelector('.bg-text');
 if(chartDiv.getAttribute('value') == 'invisible'){
     chartDiv.style.display = 'none';
 }
@@ -102,6 +103,7 @@ async function PapaParse(department, num, name) {
         gradeChart.update();
     } else {
         loadChart(gradeDist);
+        aboutDiv.style.visibility='hidden';
         chartDiv.style.display = '';
     }
 }
