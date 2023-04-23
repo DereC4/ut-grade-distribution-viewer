@@ -33,7 +33,7 @@ function parseName() {
 async function PapaParse(department, num, name) {
     let cData = '';
     // await fetch('https://derec4.github.io/UT-Grade-Dist/2022prefixes.json');
-    await fetch('https://derec4.github.io/UT-Grade-Dist/2022%20Fall.json')
+    await fetch('https://derec4.github.io/ut-grade-data/2022%20Fall.json')
     .then(res => res.json())
     .then(data => { cData = data; });
 

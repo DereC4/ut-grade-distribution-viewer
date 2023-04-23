@@ -113,7 +113,6 @@ footer p {
   background-size: cover;
 }
 
-/* Position text in the middle of the page/image */
 .bg-text {
   background-color: rgb(0, 0, 0);
   /* Fallback color */
@@ -122,12 +121,35 @@ footer p {
   color: white;
   font-weight: bold;
   border: 3px solid #f1f1f1;
+  margin: 5px auto;
+
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* z-index: 2; */
+  width: 70%;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Position text in the middle of the page/image */
+.bg-form {
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  margin: 5px auto;
+
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2;
-  width: 80%;
+  /* z-index: 2; */
+  width: 70%;
   padding: 20px;
   text-align: center;
 }
