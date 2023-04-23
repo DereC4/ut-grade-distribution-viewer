@@ -35,20 +35,14 @@ async function PapaParse(department, num, name) {
     // await fetch('https://derec4.github.io/UT-Grade-Dist/2022prefixes.json');
     await fetch('https://derec4.github.io/UT-Grade-Dist/2022%20Fall.json')
     .then(res => res.json())
-    .then(data => {
-        cData = data;
-     })
-    .then(() => {
-    //   console.log(cData);
-     });
-    console.log(cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase())));
-    console.log(num);
-    console.log(cData.filter(cData => cData["Course Number"] == num.toString().toUpperCase()));
+    .then(data => { cData = data; });
+
     let selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase()))
-                             .filter(cData => cData["Course Number"].includes(num.toUpperCase()))
+                             .filter(cData => cData["Course Number"] == num.toString().toUpperCase())
                              .filter(cData => cData["Course Title"].includes(name.toUpperCase()));
     if(selectedClass.length == 0) {
         // Possible that the class name was typed wrong; try again with just the course number
+        console.log("Second Option");
         selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase()))
                              .filter(cData => cData["Course Title"].includes(name.toUpperCase()));
     } 
@@ -57,6 +51,7 @@ async function PapaParse(department, num, name) {
         alert("No data found on " + className);
         return;
     }
+    
     console.log(selectedClass);
     let gradeDist = { 
         "A": 0,
