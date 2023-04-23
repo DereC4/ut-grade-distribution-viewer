@@ -42,7 +42,8 @@ async function PapaParse(department, num, name) {
     //   console.log(cData);
      });
     console.log(cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase())));
-    console.log(cData.filter(cData => cData["Course Number"].includes(num.toUpperCase())));
+    console.log(num);
+    console.log(cData.filter(cData => cData["Course Number"] == num.toString().toUpperCase()));
     let selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase()))
                              .filter(cData => cData["Course Number"].includes(num.toUpperCase()))
                              .filter(cData => cData["Course Title"].includes(name.toUpperCase()));
