@@ -1,5 +1,10 @@
-# Why is this a thing? There are tons of other ones!
+# Why is this a thing? 
 
-I was bored in VAPA one day and then realized that a lot of the popular sites like Catalyst and the UT Registratrion Plus extension showed outdated data or didn't have 
-data at all. They may update in the future but for the time being that is an issue (No hate tho, I love UT Registration Plus they laughed at my jokes).
+I'm sure you've all seen this before: 
+
+![image](https://user-images.githubusercontent.com/53978637/233871181-d681c4a6-20a7-4544-9f1f-5e5fae1a6569.png)
+
+It's from a (super helpful) registration extension, and shows for more than half the classes looked at (No hate, I love UT Registration Plus they laughed at my jokes)
+
+Bored in VAPA one day, I noticed popular sites like Catalyst and UT Registration Plus showed outdated or no data at all. They may update in the future but for the time being that is an issue. As a result, I decided to make this website instead of paying attention to the pipelining lecture in 429 that day. Magically, my quiz grade average decreased dramatically that week. Go figure 🤷‍♂️
 
