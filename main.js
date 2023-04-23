@@ -18,15 +18,16 @@ function parseName() {
         alert("At least fill out the form...");
         return;
     }
+    if(!department || !classNum) {
+        alert("Missing fields")
+        return;
+    }
     if(department.length != 3) {
         alert("Invalid Department");
         return;
     } 
-    if(className == '' || department == '') {
-        return;
-    }
-    console.log(department, classNum, className);
-    PapaParse(department, classNum, className);
+    console.log(department, classNum.toString(), className.trim());
+    PapaParse(department, classNum.toString(), className.trim());
 }
 
 async function PapaParse(department, num, name) {
@@ -40,24 +41,21 @@ async function PapaParse(department, num, name) {
     .then(() => {
     //   console.log(cData);
      });
-    
-    if(cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase())).length == 0) {
-        alert("Invalid Prefix");
-        return;
-    }  
-    const selectedClass = '';
-    if(cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase()))
-            .filter(cData => cData["Course Number"].includes(num.toUpperCase))
-            .filter(cData => cData["Course Title"].includes(name.toUpperCase())).length == 0) {
+    console.log(cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase())));
+    console.log(cData.filter(cData => cData["Course Number"].includes(num.toUpperCase())));
+    let selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase()))
+                             .filter(cData => cData["Course Number"].includes(num.toUpperCase()))
+                             .filter(cData => cData["Course Title"].includes(name.toUpperCase()));
+    if(selectedClass.length == 0) {
         // Possible that the class name was typed wrong; try again with just the course number
         selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase()))
                              .filter(cData => cData["Course Title"].includes(name.toUpperCase()));
-    } else {
-        selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase()))
-                             .filter(cData => cData["Course Number"].includes(num.toUpperCase))
-                             .filter(cData => cData["Course Title"].includes(name.toUpperCase()))
+    } 
+    if(selectedClass.length == 0) {
+        // Still can't find anything? Just exit without making a chart and alert that nothing could be found
+        alert("No data found on " + className);
+        return;
     }
-
     console.log(selectedClass);
     let gradeDist = { 
         "A": 0,
