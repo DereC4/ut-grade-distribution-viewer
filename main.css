@@ -1,162 +1,95 @@
-/*
-* Disclaimer: Made in 3 minutes while I was bored at lecture
-*/
-/* General Styles */
 body {
   font-family: 'Helvetica Neue', sans-serif;
-  background: rgb(27, 26, 42);
-  background: linear-gradient(90deg, rgba(61, 87, 92, 1) 0%, rgb(69, 68, 84) 100%);
+  background: #1b1a2a;
+  background: linear-gradient(90deg, rgba(61, 87, 92, 1) 0, #454454 100%)
 }
 
 a {
   color: #2c82c9;
-  text-decoration: none;
+  text-decoration: none
 }
 
-/* Header Styles */
-header {
-  background-color: #2c82c9;
-  color: #ffffff;
-  padding: 20px;
-}
-
-header h1 {
-  font-size: 48px;
-  margin: 0;
-}
-
-header h2 {
-  font-size: 24px;
-  margin: 0;
-}
-
-/* Navigation Styles */
-nav {
-  background-color: #ffffff;
-  padding: 20px;
-}
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav li {
-  display: inline-block;
-  margin-right: 20px;
-}
-
-nav a {
-  color: #333333;
-  font-size: 18px;
-  text-decoration: none;
-}
-
-nav a:hover {
-  color: #2c82c9;
-}
-
-/* Main Content Styles */
 main {
-  padding: 20px;
+  padding: 20px
 }
 
 main h1 {
   font-size: 36px;
-  margin: 0 0 20px 0;
+  margin: 0 0 20px 0
 }
 
 main p {
   font-size: 18px;
   line-height: 1.5;
-  margin: 0 0 20px 0;
+  margin: 0 0 20px 0
 }
 
-/* Footer Styles */
 footer {
   background-color: #2e2d2d;
-  color: #ffffff;
+  color: #fff;
   padding: 10px;
-  position: absolute; 
-  bottom: 0; 
-  left: 0; 
-  width: 100%; 
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   text-align: left;
-  font-size: 13px;
+  font-size: 13px
 }
 
 footer p {
   font-size: 18px;
-  margin: 0;
+  margin: 0
 }
 
-/* Backgrund stuffs*/
 * {
-  box-sizing: border-box;
+  box-sizing: border-box
 }
 
 .bg {
-  /* The image used */
-  background-image: url("tempbg.png");
-
-  /* Add the blur effect */
+  background-image: url(tempbg.png);
   filter: blur(8px);
   -webkit-filter: blur(8px);
-
-  /* Full height */
   height: 100%;
-
-  /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover
 }
 
 .bg-text {
-  background-color: rgb(0, 0, 0);
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* opacity/see-through */
-  color: white;
-  font-weight: bold;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, .4);
+  color: #fff;
+  font-weight: 700;
   border: 3px solid #f1f1f1;
   margin: 5px auto;
-
   position: absolute;
   top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* z-index: 2; */
   width: 70%;
   padding: 20px;
-  text-align: center;
+  text-align: center
 }
 
-/* Position text in the middle of the page/image */
 .bg-form {
-  background-color: rgb(0, 0, 0);
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* opacity/see-through */
-  color: white;
-  font-weight: bold;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, .4);
+  color: #fff;
+  font-weight: 700;
   border: 3px solid #f1f1f1;
   margin: 5px auto;
-
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* z-index: 2; */
   width: auto;
   padding: 20px;
-  text-align: center;
+  text-align: center
 }
 
 .chart-container {
   position: relative;
   margin: auto;
   height: 80vh;
-  width: 80vw;
+  width: 80vw
 }
