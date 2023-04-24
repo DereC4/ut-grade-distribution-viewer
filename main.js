@@ -9,7 +9,7 @@ var gradeChart;
 const ctx = document.getElementById("gradeBar");
 
 /*
- Parse the name
+ Parse the input form and class data
 */
 async function parseName() {
     let className = document.getElementById('courseName').value;
@@ -36,6 +36,9 @@ async function parseName() {
     await PapaParse(department, classNum.toString(), className.trim(), semester);
 }
 
+/*
+ Fetch the necessary database depending on semester and filter based on the input data
+*/
 async function PapaParse(department, num, name, sem) {
     let cData = '';
     // console.log(sem);
