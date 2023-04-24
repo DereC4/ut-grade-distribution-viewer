@@ -11,10 +11,14 @@ const ctx = document.getElementById("gradeBar");
 /*
  Parse the name
 */
-function parseName() {
+async function parseName() {
     let className = document.getElementById('courseName').value;
     let classNum = document.getElementById('courseNum').value;
-    let department = document.getElementById('courseField').value;
+    let department = document.getElementById('courseField').value.trim();
+    let departments = '';
+    await fetch('https://derec4.github.io/ut-grade-data/2022prefixes.json')
+    .then(res => res.json())
+    .then(data => { departments = data; });
     if(!className && !classNum && !department) {
         alert("At least fill out the form...");
         return;
@@ -23,12 +27,12 @@ function parseName() {
         alert("Missing fields")
         return;
     }
-    if(department.length != 3) {
+    if(!departments.includes(department)) {
         alert("Invalid Department");
         return;
     } 
     console.log(department, classNum.toString(), className.trim());
-    PapaParse(department, classNum.toString(), className.trim());
+    await PapaParse(department, classNum.toString(), className.trim());
 }
 
 async function PapaParse(department, num, name) {
@@ -45,7 +49,7 @@ async function PapaParse(department, num, name) {
         // Possible that the class name was typed wrong; try again with just the course number
         console.log("Second Option");
         selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase()))
-                             .filter(cData => cData["Course Title"].includes(name.toUpperCase()));
+                             .filter(cData => cData["Course Number"] == num.toString().toUpperCase());
     } 
     if(selectedClass.length == 0) {
         // Still can't find anything? Just exit without making a chart and alert that nothing could be found
@@ -93,7 +97,7 @@ async function PapaParse(department, num, name) {
                 'D-',
                 'F'],
             datasets: [{
-                label: 'Grade Distribution',
+                label: 'Grade distribution for \"' + selectedClass[0]["Course Title"] +"\"",
                 data: Object.values(gradeDist),
                 borderWidth: 2,
                 // borderColor: '#36A2EB',
@@ -102,13 +106,13 @@ async function PapaParse(department, num, name) {
             };
         gradeChart.update();
     } else {
-        loadChart(gradeDist);
+        loadChart(gradeDist, selectedClass[0]["Course Title"]);
         aboutDiv.style.visibility='hidden';
         chartDiv.style.display = '';
     }
 }
 
-function loadChart(gradeDist) {
+function loadChart(gradeDist, courseName) {
     gradeChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -126,13 +130,19 @@ function loadChart(gradeDist) {
             'D-',
             'F'],
         datasets: [{
-            label: 'Grade Distribution',
+            label: 'Grade distribution for \"' + courseName + "\"",
             data: Object.values(gradeDist),
             borderWidth: 2,
             backgroundColor: ["rgb(98, 244, 54)", "rgb(129, 231, 10)", "rgb(151, 218, 0)", "rgb(168, 204, 0)", "rgb(181, 190, 0)", "rgb(191, 176, 0)", "rgb(199, 162, 0)", "rgb(205, 148, 0)", "rgb(209, 133, 0)", "rgb(211, 119, 0)", "rgb(210, 105, 0)", "rgb(208, 91, 23)", "rgb(204, 78, 36)", "rgb(198, 66, 46)", "rgb(190, 54, 54)", ""],
         }]
         },
         options: {
+            legend: {
+                labels: {
+                    fontColor: "#00FF59",
+                    fontSize: 15
+                }
+            },
             responsive: true,
             maintainAspectRatio: false,
             scales: {
