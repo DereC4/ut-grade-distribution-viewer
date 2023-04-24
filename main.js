@@ -15,6 +15,7 @@ async function parseName() {
     let className = document.getElementById('courseName').value;
     let classNum = document.getElementById('courseNum').value;
     let department = document.getElementById('courseField').value.trim();
+    let semester = document.getElementById('semester').value;
     let departments = '';
     await fetch('https://derec4.github.io/ut-grade-data/2022prefixes.json')
     .then(res => res.json())
@@ -32,13 +33,32 @@ async function parseName() {
         return;
     } 
     console.log(department, classNum.toString(), className.trim());
-    await PapaParse(department, classNum.toString(), className.trim());
+    await PapaParse(department, classNum.toString(), className.trim(), semester);
 }
 
-async function PapaParse(department, num, name) {
+async function PapaParse(department, num, name, sem) {
     let cData = '';
-    // await fetch('https://derec4.github.io/UT-Grade-Dist/2022prefixes.json');
-    await fetch('https://derec4.github.io/ut-grade-data/2022%20Fall.json')
+    // console.log(sem);
+    let url = '';
+    switch (sem) {
+        case 'f2022':
+            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
+            break;
+        case 's2022':
+            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
+            break;
+        case 'sp2022':
+            // Temp, change when other data sets are added
+            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
+            break;
+        case 'f2021':
+            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
+            break;          
+        default:
+            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
+            break;
+    }
+    await fetch(url)
     .then(res => res.json())
     .then(data => { cData = data; });
 
