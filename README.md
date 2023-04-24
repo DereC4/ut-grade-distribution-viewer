@@ -6,7 +6,7 @@ I'm sure you've all seen this before:
 
 It's from a (super helpful) registration extension, and shows for more than half the classes looked at (No hate, I love UT Registration Plus they laughed at my jokes)
 
-Bored in VAPA one day, I noticed popular sites like Catalyst and UT Registration Plus showed outdated or no data at all. They may update in the future but for the time being that is an issue. As a result, I decided to make this website instead of paying attention to the pipelining lecture in 429 that day. Magically, my quiz grade average decreased dramatically that week. Go figure 🤷‍♂️
+Bored in VAPA one day, I noticed popular sites like Catalyst and UT Registration Plus showed outdated on grade distributions, or no data at all. They may update in the future but for the time being that is an issue. As a result, I decided to make this website instead of paying attention to the pipelining lecture in 429 that day. Magically, my quiz grade average decreased dramatically that week. Go figure 🤷‍♂️
 
 Using the site is simple, just input the necessary data and voila!
 
