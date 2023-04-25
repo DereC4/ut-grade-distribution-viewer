@@ -14,12 +14,12 @@ main {
 }
 
 main h1 {
-  font-size: 36px;
+  font-size: 24px;
   margin: 0 0 20px 0
 }
 
 main p {
-  font-size: 18px;
+  font-size: 10px;
   line-height: 1.5;
   margin: 0 0 20px 0
 }
@@ -63,11 +63,12 @@ footer p {
   border: 3px solid #f1f1f1;
   margin: 5px auto;
   position: absolute;
+  font-size: small;
   top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
-  padding: 20px;
+  padding: 10px;
   text-align: center
 }
 

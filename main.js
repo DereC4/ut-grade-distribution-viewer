@@ -9,12 +9,13 @@ var gradeChart;
 const ctx = document.getElementById("gradeBar");
 
 /*
- Parse the name
+ Parse the input form and class data
 */
 async function parseName() {
     let className = document.getElementById('courseName').value;
     let classNum = document.getElementById('courseNum').value;
     let department = document.getElementById('courseField').value.trim();
+    let semester = document.getElementById('semester').value;
     let departments = '';
     await fetch('https://derec4.github.io/ut-grade-data/2022prefixes.json')
     .then(res => res.json())
@@ -32,13 +33,35 @@ async function parseName() {
         return;
     } 
     console.log(department, classNum.toString(), className.trim());
-    await PapaParse(department, classNum.toString(), className.trim());
+    await PapaParse(department, classNum.toString(), className.trim(), semester);
 }
 
-async function PapaParse(department, num, name) {
+/*
+ Fetch the necessary database depending on semester and filter based on the input data
+*/
+async function PapaParse(department, num, name, sem) {
     let cData = '';
-    // await fetch('https://derec4.github.io/UT-Grade-Dist/2022prefixes.json');
-    await fetch('https://derec4.github.io/ut-grade-data/2022%20Fall.json')
+    // console.log(sem);
+    let url = '';
+    switch (sem) {
+        case 'f2022':
+            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
+            break;
+        case 's2022':
+            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
+            break;
+        case 'sp2022':
+            // Temp, change when other data sets are added
+            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
+            break;
+        case 'f2021':
+            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
+            break;          
+        default:
+            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
+            break;
+    }
+    await fetch(url)
     .then(res => res.json())
     .then(data => { cData = data; });
 
@@ -53,7 +76,7 @@ async function PapaParse(department, num, name) {
     } 
     if(selectedClass.length == 0) {
         // Still can't find anything? Just exit without making a chart and alert that nothing could be found
-        alert("No data found on " + className);
+        alert("No data found");
         return;
     }
     
