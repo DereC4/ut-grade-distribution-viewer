@@ -76,7 +76,7 @@ async function PapaParse(department, num, name, sem) {
     } 
     if(selectedClass.length == 0) {
         // Still can't find anything? Just exit without making a chart and alert that nothing could be found
-        alert("No data found on " + className);
+        alert("No data found");
         return;
     }
     
