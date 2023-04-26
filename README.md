@@ -1,4 +1,8 @@
-# Why is this a thing? 
+## How do I access the website?
+
+https://derec4.github.io/ut-grade-distribution-viewer/
+
+## Why is this a thing? 
 
 I'm sure you've all seen this before: 
 
