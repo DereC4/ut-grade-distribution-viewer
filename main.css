@@ -14,14 +14,14 @@ main {
 }
 
 h1 {
-  font-size: 1rem;
-  margin: 0 0 1vw 0
+  font-size: 2rem;
+  margin: 0 0 1rem 0
 }
 
 p {
-  font-size: 1vw;
+  font-size: 1rem;
   line-height: 1.5;
-  margin: 0 0 1vw 0
+  margin: 0 0 1rem 0
 }
 
 footer {
@@ -43,31 +43,14 @@ footer {
 .about-text {
   background-color: rgba(0, 0, 0, .4);
   color: #fff;
-  font-weight: 700;
   border: 3px solid #f1f1f1;
-  margin: 5px auto;
-  position: absolute;
-  font-size: small;
-  top: 15%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70%;
-  padding: 1%;
   text-align: center
 }
 
 .bg-form {
   background-color: rgba(0, 0, 0, .4);
   color: #fff;
-  font-weight: 700;
   border: 3px solid #f1f1f1;
-  margin: 5px auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: auto;
-  padding: 20px;
   text-align: center
 }
 
