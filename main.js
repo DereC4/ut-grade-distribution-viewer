@@ -46,7 +46,7 @@ async function PapaParse(department, num, name, sem) {
         case 'f2022':
             url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
             break;
-        case 's2022':
+        case 'sum2022':
             url = 'https://derec4.github.io/ut-grade-data/2022%20Summer.json';
             break;
         case 'sp2022':
