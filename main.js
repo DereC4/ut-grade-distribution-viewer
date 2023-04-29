@@ -12,9 +12,9 @@ const ctx = document.getElementById("gradeBar");
  Parse the input form and class data
 */
 async function parseName() {
-    let className = document.getElementById('courseName').value;
+    let className = document.getElementById('courseName').value.toUpperCase();
     let classNum = document.getElementById('courseNum').value;
-    let department = document.getElementById('courseField').value.trim();
+    let department = document.getElementById('courseField').value.trim().toUpperCase();
     let semester = document.getElementById('semester').value;
     let departments = '';
     await fetch('https://derec4.github.io/ut-grade-data/2022prefixes.json')
@@ -48,14 +48,14 @@ async function PapaParse(department, num, name, sem) {
             url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
             break;
         case 's2022':
-            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
+            url = 'https://derec4.github.io/ut-grade-data/2022%20Summer.json';
             break;
         case 'sp2022':
             // Temp, change when other data sets are added
-            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
+            url = 'https://derec4.github.io/ut-grade-data/2022%20Spring.json';
             break;
         case 'f2021':
-            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
+            url = 'https://derec4.github.io/ut-grade-data/2021%20Fall.json';
             break;          
         default:
             url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
@@ -65,13 +65,13 @@ async function PapaParse(department, num, name, sem) {
     .then(res => res.json())
     .then(data => { cData = data; });
 
-    let selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase()))
+    let selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department))
                              .filter(cData => cData["Course Number"] == num.toString().toUpperCase())
-                             .filter(cData => cData["Course Title"].includes(name.toUpperCase()));
+                             .filter(cData => cData["Course Title"].includes(name));
     if(selectedClass.length == 0) {
         // Possible that the class name was typed wrong; try again with just the course number
         console.log("Second Option");
-        selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department.toUpperCase()))
+        selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department))
                              .filter(cData => cData["Course Number"] == num.toString().toUpperCase());
     } 
     if(selectedClass.length == 0) {
