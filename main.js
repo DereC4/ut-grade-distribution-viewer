@@ -48,14 +48,14 @@ async function PapaParse(department, num, name, sem) {
             url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
             break;
         case 's2022':
-            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
+            url = 'https://derec4.github.io/ut-grade-data/2022%20Summer.json';
             break;
         case 'sp2022':
             // Temp, change when other data sets are added
-            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
+            url = 'https://derec4.github.io/ut-grade-data/2022%20Spring.json';
             break;
         case 'f2021':
-            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
+            url = 'https://derec4.github.io/ut-grade-data/2021%20Fall.json';
             break;          
         default:
             url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
