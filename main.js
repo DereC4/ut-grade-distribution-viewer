@@ -1,7 +1,7 @@
 const submitButton = document.getElementById('subBut');
 submitButton.addEventListener("click", parseName);
 var chartDiv = document.querySelector('#grades');
-var aboutDiv = document.querySelector('.bg-text');
+var aboutDiv = document.querySelector('.about-text');
 if(chartDiv.getAttribute('value') == 'invisible'){
     chartDiv.style.display = 'none';
 }

@@ -10,53 +10,37 @@ a {
 }
 
 main {
-  padding: 20px
+  padding: 10%
 }
 
 h1 {
-  font-size: 2vw;
-  margin: 0 0 20px 0
+  font-size: 1rem;
+  margin: 0 0 1vw 0
 }
 
 p {
   font-size: 1vw;
   line-height: 1.5;
-  margin: 0 0 20px 0
+  margin: 0 0 1vw 0
 }
 
 footer {
   background-color: #2e2d2d;
   color: #fff;
-  padding: 10px;
+  padding: 1%;
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   text-align: left;
-  font-size: 13px
-}
-
-footer p {
-  font-size: 18px;
-  margin: 0
+  font-size: 1rem
 }
 
 * {
   box-sizing: border-box
 }
 
-.bg {
-  background-image: url(tempbg.png);
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover
-}
-
-.bg-text {
-  background-color: #000;
+.about-text {
   background-color: rgba(0, 0, 0, .4);
   color: #fff;
   font-weight: 700;
@@ -68,12 +52,11 @@ footer p {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
-  padding: 10px;
+  padding: 1%;
   text-align: center
 }
 
 .bg-form {
-  background-color: #000;
   background-color: rgba(0, 0, 0, .4);
   color: #fff;
   font-weight: 700;
