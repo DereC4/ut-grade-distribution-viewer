@@ -12,7 +12,7 @@ const ctx = document.getElementById("gradeBar");
  Parse the input form and class data
 */
 async function parseName() {
-    let className = document.getElementById('courseName').value;
+    let className = document.getElementById('courseName').value.toUpperCase();
     let classNum = document.getElementById('courseNum').value;
     let department = document.getElementById('courseField').value.trim().toUpperCase();
     let semester = document.getElementById('semester').value;
@@ -67,7 +67,7 @@ async function PapaParse(department, num, name, sem) {
 
     let selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department))
                              .filter(cData => cData["Course Number"] == num.toString().toUpperCase())
-                             .filter(cData => cData["Course Title"].includes(name.toUpperCase()));
+                             .filter(cData => cData["Course Title"].includes(name));
     if(selectedClass.length == 0) {
         // Possible that the class name was typed wrong; try again with just the course number
         console.log("Second Option");
