@@ -81,6 +81,7 @@ async function PapaParse(department, num, name, sem) {
     }
     
     console.log(selectedClass);
+    
     let gradeDist = { 
         "A": 0,
         'A-': 0,
@@ -96,10 +97,16 @@ async function PapaParse(department, num, name, sem) {
         'F': 0,
         'Other': 0
     };
+
+    let lableName = selectedClass[0]["Course Title"];
+    let lastClass = selectedClass[0]["Course Title"];
     for(i in selectedClass) {
         let letterGrade = selectedClass[i]["Letter Grade"];
         let cnt = selectedClass[i]["Count of letter grade"]
         gradeDist[letterGrade] += cnt;
+        if(!(lastClass === selectedClass[i]["Course Title"])) {
+            lableName = "Multiple courses found using the same ID; try specifying a course name!"
+        }
         // console.log(selectedClass[i]["Letter Grade"]);
         // console.log(selectedClass[i]["Count of letter grade"]);
     }
@@ -108,7 +115,7 @@ async function PapaParse(department, num, name, sem) {
         gradeChart.config.data = {
             labels: gradeLabels,
             datasets: [{
-                label: 'Grade distribution for \"' + selectedClass[0]["Course Title"] +"\"",
+                label: 'Grade distribution for \"' + lableName +"\"",
                 data: Object.values(gradeDist),
                 borderWidth: 2,
                 // borderColor: '#36A2EB',
@@ -117,7 +124,7 @@ async function PapaParse(department, num, name, sem) {
             };
         gradeChart.update();
     } else {
-        loadChart(gradeDist, selectedClass[0]["Course Title"]);
+        loadChart(gradeDist, lableName);
         aboutDiv.style.visibility='hidden';
         chartDiv.style.display = '';
     }
