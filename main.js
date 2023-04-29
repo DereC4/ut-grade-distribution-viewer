@@ -32,7 +32,7 @@ async function parseName() {
         alert("Invalid Department");
         return;
     } 
-    console.log(department, classNum.toString(), className.trim());
+    console.log(department, classNum.toString(), className.trim(), sem);
     await PapaParse(department, classNum.toString(), className.trim(), semester);
 }
 
@@ -41,7 +41,6 @@ async function parseName() {
 */
 async function PapaParse(department, num, name, sem) {
     let cData = '';
-    // console.log(sem);
     let url = '';
     switch (sem) {
         case 'f2022':
@@ -70,13 +69,13 @@ async function PapaParse(department, num, name, sem) {
                              .filter(cData => cData["Course Title"].includes(name));
     if(selectedClass.length == 0) {
         // Possible that the class name was typed wrong; try again with just the course number
-        console.log("Second Option");
+        console.log("Invalid name; trying again with just the course number");
         selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department))
                              .filter(cData => cData["Course Number"] == num.toString().toUpperCase());
     } 
     if(selectedClass.length == 0) {
         // Still can't find anything? Just exit without making a chart and alert that nothing could be found
-        alert("No data found");
+        alert("No data found. Try again :(");
         return;
     }
     
