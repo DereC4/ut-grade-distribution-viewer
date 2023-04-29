@@ -32,7 +32,7 @@ async function parseName() {
         alert("Invalid Department");
         return;
     } 
-    console.log(department, classNum.toString(), className.trim(), sem);
+    console.log(department, classNum.toString(), className.trim(), semester);
     await PapaParse(department, classNum.toString(), className.trim(), semester);
 }
 
