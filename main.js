@@ -7,7 +7,7 @@ if(chartDiv.getAttribute('value') == 'invisible'){
 }
 var gradeChart;
 const ctx = document.getElementById("gradeBar");
-
+const labels = ['A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F'];
 /*
  Parse the input form and class data
 */
@@ -32,7 +32,7 @@ async function parseName() {
         alert("Invalid Department");
         return;
     } 
-    console.log(department, classNum.toString(), className.trim(), sem);
+    console.log(department, classNum.toString(), className.trim(), semester);
     await PapaParse(department, classNum.toString(), className.trim(), semester);
 }
 
@@ -50,7 +50,6 @@ async function PapaParse(department, num, name, sem) {
             url = 'https://derec4.github.io/ut-grade-data/2022%20Summer.json';
             break;
         case 'sp2022':
-            // Temp, change when other data sets are added
             url = 'https://derec4.github.io/ut-grade-data/2022%20Spring.json';
             break;
         case 'f2021':
@@ -64,12 +63,16 @@ async function PapaParse(department, num, name, sem) {
     .then(res => res.json())
     .then(data => { cData = data; });
 
+    if(sem.includes("sum")) {
+
+    }
+
     let selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department))
                              .filter(cData => cData["Course Number"] == num.toString().toUpperCase())
                              .filter(cData => cData["Course Title"].includes(name));
     if(selectedClass.length == 0) {
         // Possible that the class name was typed wrong; try again with just the course number
-        console.log("Invalid name; trying again with just the course number");
+        console.log("Invalid name; trying again with just course number and prefix");
         selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department))
                              .filter(cData => cData["Course Number"] == num.toString().toUpperCase());
     } 
@@ -105,19 +108,7 @@ async function PapaParse(department, num, name, sem) {
     console.log(gradeDist);
     if(gradeChart) {
         gradeChart.config.data = {
-            labels: [           
-                'A',
-                'A-',
-                'B+',
-                'B',
-                'B-',
-                'C+',
-                'C',
-                'C-',
-                'D+',
-                'D',
-                'D-',
-                'F'],
+            labels: labels,
             datasets: [{
                 label: 'Grade distribution for \"' + selectedClass[0]["Course Title"] +"\"",
                 data: Object.values(gradeDist),
@@ -138,19 +129,7 @@ function loadChart(gradeDist, courseName) {
     gradeChart = new Chart(ctx, {
         type: 'bar',
         data: {
-        labels: [           
-            'A',
-            'A-',
-            'B+',
-            'B',
-            'B-',
-            'C+',
-            'C',
-            'C-',
-            'D+',
-            'D',
-            'D-',
-            'F'],
+        labels: labels,
         datasets: [{
             label: 'Grade distribution for \"' + courseName + "\"",
             data: Object.values(gradeDist),
