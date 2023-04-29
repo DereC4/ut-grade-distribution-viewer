@@ -125,6 +125,7 @@ async function PapaParse(department, num, name, sem) {
     } else {
         loadChart(gradeDist, lableName);
         aboutDiv.style.visibility='hidden';
+        aboutDiv.style.display='none';
         chartDiv.style.display = '';
     }
 }
