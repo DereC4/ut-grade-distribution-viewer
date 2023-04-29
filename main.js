@@ -63,12 +63,8 @@ async function PapaParse(department, num, name, sem) {
     .then(res => res.json())
     .then(data => { cData = data; });
 
-    if(sem.includes("sum")) {
-
-    }
-
     let selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department))
-                             .filter(cData => cData["Course Number"] == num.toString().toUpperCase())
+                             .filter(handleSummer(cData, sem))
                              .filter(cData => cData["Course Title"].includes(name));
     if(selectedClass.length == 0) {
         // Possible that the class name was typed wrong; try again with just the course number
@@ -125,6 +121,13 @@ async function PapaParse(department, num, name, sem) {
     }
 }
 
+function handleSummer(cData, sem) {
+    if(sem.includes("sum")) {
+        return cData["Course Number"].includes(num.toString().toUpperCase());
+    } else {
+        return cData["Course Number"] == num.toString().toUpperCase();
+    }
+}
 function loadChart(gradeDist, courseName) {
     gradeChart = new Chart(ctx, {
         type: 'bar',
