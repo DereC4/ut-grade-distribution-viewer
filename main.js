@@ -1,7 +1,7 @@
 const submitButton = document.getElementById('subBut');
 submitButton.addEventListener("click", parseName);
 var chartDiv = document.querySelector('#grades');
-var aboutDiv = document.querySelector('.bg-text');
+var aboutDiv = document.querySelector('.about-text');
 if(chartDiv.getAttribute('value') == 'invisible'){
     chartDiv.style.display = 'none';
 }
@@ -125,6 +125,7 @@ async function PapaParse(department, num, name, sem) {
     } else {
         loadChart(gradeDist, lableName);
         aboutDiv.style.visibility='hidden';
+        aboutDiv.style.display='none';
         chartDiv.style.display = '';
     }
 }
