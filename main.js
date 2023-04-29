@@ -7,6 +7,7 @@ if(chartDiv.getAttribute('value') == 'invisible'){
 }
 var gradeChart;
 const ctx = document.getElementById("gradeBar");
+const gradeLabels = ["A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"];
 
 /*
  Parse the input form and class data
@@ -105,19 +106,7 @@ async function PapaParse(department, num, name, sem) {
     console.log(gradeDist);
     if(gradeChart) {
         gradeChart.config.data = {
-            labels: [           
-                'A',
-                'A-',
-                'B+',
-                'B',
-                'B-',
-                'C+',
-                'C',
-                'C-',
-                'D+',
-                'D',
-                'D-',
-                'F'],
+            labels: gradeLabels,
             datasets: [{
                 label: 'Grade distribution for \"' + selectedClass[0]["Course Title"] +"\"",
                 data: Object.values(gradeDist),
@@ -138,19 +127,7 @@ function loadChart(gradeDist, courseName) {
     gradeChart = new Chart(ctx, {
         type: 'bar',
         data: {
-        labels: [           
-            'A',
-            'A-',
-            'B+',
-            'B',
-            'B-',
-            'C+',
-            'C',
-            'C-',
-            'D+',
-            'D',
-            'D-',
-            'F'],
+        labels: gradeLabels,
         datasets: [{
             label: 'Grade distribution for \"' + courseName + "\"",
             data: Object.values(gradeDist),
