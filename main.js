@@ -1,7 +1,8 @@
 const submitButton = document.getElementById('subBut');
 submitButton.addEventListener("click", parseName);
-var chartDiv = document.querySelector('#grades');
-var aboutDiv = document.querySelector('.about-text');
+const chartDiv = document.querySelector('#grades');
+const aboutDiv = document.querySelector('.about-text');
+const formDiv = document.querySelector('.bg-form');
 if(chartDiv.getAttribute('value') == 'invisible'){
     chartDiv.style.display = 'none';
 }
@@ -127,6 +128,7 @@ async function PapaParse(department, num, name, sem) {
         aboutDiv.style.visibility='hidden';
         aboutDiv.style.display='none';
         chartDiv.style.display = '';
+        formDiv.setAttribute("style", "grid-row: 1");
     }
 }
 
