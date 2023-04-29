@@ -99,12 +99,11 @@ async function PapaParse(department, num, name, sem) {
     };
 
     let lableName = selectedClass[0]["Course Title"];
-    let lastClass = selectedClass[0]["Course Title"];
     for(i in selectedClass) {
         let letterGrade = selectedClass[i]["Letter Grade"];
         let cnt = selectedClass[i]["Count of letter grade"]
         gradeDist[letterGrade] += cnt;
-        if(!(lastClass === selectedClass[i]["Course Title"])) {
+        if(!(lableName === selectedClass[i]["Course Title"])) {
             lableName = "Multiple courses found using the same ID; try specifying a course name!"
         }
         // console.log(selectedClass[i]["Letter Grade"]);
