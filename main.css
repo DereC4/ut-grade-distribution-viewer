@@ -1,7 +1,7 @@
 body {
   font-family: 'Helvetica Neue', sans-serif;
   background: #1b1a2a;
-  background: linear-gradient(90deg, rgba(61, 87, 92, 1) 0, #454454 100%)
+  background: linear-gradient(90deg, rgba(61, 87, 92, 1) 0, #454454 100%);
 }
 
 a {
@@ -40,23 +40,38 @@ footer {
   box-sizing: border-box
 }
 
+.wrapper {
+  display: grid;
+  gap: 2vw;
+  grid-auto-rows: minmax(100px, auto);
+
+}
+
 .about-text {
   background-color: rgba(0, 0, 0, .4);
   color: #fff;
   border: 3px solid #f1f1f1;
-  text-align: center
+  text-align: center;
+  grid-column: 1;
+  grid-row: 1;
+  border-radius: 10px;
+
 }
 
 .bg-form {
   background-color: rgba(0, 0, 0, .4);
   color: #fff;
   border: 3px solid #f1f1f1;
-  text-align: center
+  text-align: center;
+  grid-column: 1;
+  grid-row: 2;
+  border-radius: 10px;
+
 }
 
 .chart-container {
   position: relative;
   margin: auto;
   height: 80vh;
-  width: 80vw
+  width: 80vw;
 }
