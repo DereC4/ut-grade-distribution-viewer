@@ -13,17 +13,6 @@ main {
   padding: 10%
 }
 
-h1 {
-  font-size: 2rem;
-  margin: 0 0 1rem 0
-}
-
-p {
-  font-size: 1rem;
-  line-height: 1.5;
-  margin: 0 0 1rem 0
-}
-
 footer {
   background-color: #2e2d2d;
   color: #fff;
@@ -81,21 +70,48 @@ footer {
 
 /* Mobile */
 .bg-form {
-  padding: 14px;
+  padding: 3px;
 }
 
 .about-text {
-  padding: 14px;
+  padding: 3px;
+}
+
+p {
+  font-size: 10px;
+  line-height: 1.5;
+  margin: 0 0 1rem 0
+}
+
+label {
+  font-size: 10px;
+}
+
+h1 {
+  font-size: 15px;
+  margin: 0 0 1rem 0
 }
 
 /* Tablet */
 @media (min-width:600px) {
   .bg-form {
-    padding: 20px;
+    padding: 15px;
   }
 
   .about-text {
-    padding: 14px;
+    padding: 10px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+  
+  label {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 18px;
   }
 }
 
@@ -106,6 +122,19 @@ footer {
   }
 
   .about-text {
-    padding: 14px;
+    padding: 12px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+  
+  label {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 30px;
+    margin: 0 0 1rem 0
   }
 }
