@@ -105,7 +105,7 @@ async function PapaParse(department, num, name, sem) {
         let cnt = selectedClass[i]["Count of letter grade"]
         gradeDist[letterGrade] += cnt;
         if(!(lableName === selectedClass[i]["Course Title"])) {
-            lableName = "Multiple courses found using the same ID; try specifying a course name!"
+            lableName = "Multiple courses detected; try specifying a course name!"
         }
         // console.log(selectedClass[i]["Letter Grade"]);
         // console.log(selectedClass[i]["Count of letter grade"]);
