@@ -115,7 +115,7 @@ async function PapaParse(department, num, name, sem) {
         gradeChart.config.data = {
             labels: gradeLabels,
             datasets: [{
-                label: 'Grade distribution for \"' + lableName +"\"",
+                label: '\"' + lableName +"\"",
                 data: Object.values(gradeDist),
                 borderWidth: 2,
                 // borderColor: '#36A2EB',
@@ -138,7 +138,7 @@ function loadChart(gradeDist, courseName) {
         data: {
         labels: gradeLabels,
         datasets: [{
-            label: 'Grade distribution for \"' + courseName + "\"",
+            label: '\"' + courseName + "\"",
             data: Object.values(gradeDist),
             borderWidth: 2,
             backgroundColor: ["rgb(98, 244, 54)", "rgb(129, 231, 10)", "rgb(151, 218, 0)", "rgb(168, 204, 0)", "rgb(181, 190, 0)", "rgb(191, 176, 0)", "rgb(199, 162, 0)", "rgb(205, 148, 0)", "rgb(209, 133, 0)", "rgb(211, 119, 0)", "rgb(210, 105, 0)", "rgb(208, 91, 23)", "rgb(204, 78, 36)", "rgb(198, 66, 46)", "rgb(190, 54, 54)", ""],
