@@ -14,34 +14,37 @@ const gradeLabels = ["A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-
  Parse the input form and class data
 */
 async function parseName() {
+    let fiveDigit = document.getElementById('sectionNum').value;
     let className = document.getElementById('courseName').value.toUpperCase();
     let classNum = document.getElementById('courseNum').value;
     let department = document.getElementById('courseField').value.trim().toUpperCase();
     let semester = document.getElementById('semester').value;
     let departments = '';
-    await fetch('https://derec4.github.io/ut-grade-data/2022prefixes.json')
-    .then(res => res.json())
-    .then(data => { departments = data; });
-    if(!className && !classNum && !department) {
-        alert("At least fill out the form...");
-        return;
+    if(!fiveDigit) {
+        await fetch('https://derec4.github.io/ut-grade-data/2022prefixes.json')
+        .then(res => res.json())
+        .then(data => { departments = data; });
+        if(!className && !classNum && !department) {
+            alert("At least fill out the form...");
+            return;
+        }
+        if(!department || !classNum) {
+            alert("Missing fields")
+            return;
+        }
+        if(!departments.includes(department)) {
+            alert("Invalid Department");
+            return;
+        } 
+        console.log(department, classNum.toString(), className.trim(), semester);
     }
-    if(!department || !classNum) {
-        alert("Missing fields")
-        return;
-    }
-    if(!departments.includes(department)) {
-        alert("Invalid Department");
-        return;
-    } 
-    console.log(department, classNum.toString(), className.trim(), semester);
-    await PapaParse(department, classNum.toString(), className.trim(), semester);
+    await PapaParse(department, classNum.toString(), className.trim(), semester, fiveDigit);
 }
 
 /*
  Fetch the necessary database depending on semester and filter based on the input data
 */
-async function PapaParse(department, num, name, sem) {
+async function PapaParse(department, num, name, sem, unique) {
     let cData = '';
     let url = '';
     switch (sem) {
@@ -65,22 +68,25 @@ async function PapaParse(department, num, name, sem) {
     await fetch(url)
     .then(res => res.json())
     .then(data => { cData = data; });
-
-    let selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department))
-                             .filter(cData => cData["Course Number"] == num.toString().toUpperCase())
-                             .filter(cData => cData["Course Title"].includes(name));
-    if(selectedClass.length == 0) {
-        // Possible that the class name was typed wrong; try again with just the course number
-        console.log("Invalid name; trying again with just the course number");
+    let selectedClass = '';
+    if(unique) {
+        selectedClass = cData.filter(cData => cData['Section Number'] == unique);
+    } else {
         selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department))
-                             .filter(cData => cData["Course Number"] == num.toString().toUpperCase());
-    } 
+                                .filter(cData => cData["Course Number"] == num.toString().toUpperCase())
+                                .filter(cData => cData["Course Title"].includes(name));
+        if(selectedClass.length == 0) {
+            // Possible that the class name was typed wrong; try again with just the course number
+            console.log("Invalid name; trying again with just the course number");
+            selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department))
+                                .filter(cData => cData["Course Number"] == num.toString().toUpperCase());
+        } 
+    }
     if(selectedClass.length == 0) {
         // Still can't find anything? Just exit without making a chart and alert that nothing could be found
         alert("No data found. Try again :(");
         return;
-    }
-    
+    }    
     console.log(selectedClass);
     
     let gradeDist = { 
