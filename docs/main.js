@@ -94,7 +94,6 @@ async function PapaParse(department, num, name, sem, unique) {
                     .filter(cData => cData["Course Number"] == num.toString().toUpperCase());
             }
         }
-
     }
     if(selectedClass.length == 0) {
         // Still can't find anything? Just exit without making a chart and alert that nothing could be found
@@ -126,7 +125,7 @@ async function PapaParse(department, num, name, sem, unique) {
         let cnt = selectedClass[i]["Count of letter grade"]
         gradeDist[letterGrade] += cnt;
         if(sameName && !(lableName === selectedClass[i]["Course Title"])) {
-            lableName = "Multiple courses detected; try specifying a course name!"
+            lableName = (sem.substring(0,2)==='s2' ? "Remember, summer courses have special prefixes!" : "Multiple courses detected; try specifying a course name!");
             sameName = false;
         }
         // console.log(selectedClass[i]["Letter Grade"]);
