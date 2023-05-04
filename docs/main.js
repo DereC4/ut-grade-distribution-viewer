@@ -69,6 +69,9 @@ async function PapaParse(department, num, name, sem, unique) {
     .then(res => res.json())
     .then(data => { cData = data; });
     let selectedClass = '';
+    if(sem.substring(0,2)==='s2') {
+        
+    }
     if(unique) {
         selectedClass = cData.filter(cData => cData['Section Number'] == unique);
     } else {
