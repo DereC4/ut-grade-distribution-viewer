@@ -69,21 +69,32 @@ async function PapaParse(department, num, name, sem, unique) {
     .then(res => res.json())
     .then(data => { cData = data; });
     let selectedClass = '';
-    if(sem.substring(0,2)==='s2') {
-        
-    }
     if(unique) {
         selectedClass = cData.filter(cData => cData['Section Number'] == unique);
     } else {
-        selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department))
-                                .filter(cData => cData["Course Number"] == num.toString().toUpperCase())
-                                .filter(cData => cData["Course Title"].includes(name));
-        if(selectedClass.length == 0) {
-            // Possible that the class name was typed wrong; try again with just the course number
-            console.log("Invalid name; trying again with just the course number");
+        if(sem.substring(0,2)==='s2') {
+            console.log("Summer Semester Detected");
             selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department))
-                                .filter(cData => cData["Course Number"] == num.toString().toUpperCase());
-        } 
+                .filter(cData => cData["Course Number"].includes(num.toString().toUpperCase()))
+                .filter(cData => cData["Course Title"].includes(name));
+            if (selectedClass.length == 0) {
+                // summer names are weird
+                console.log("Invalid name; trying again with just the course number");
+                selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department))
+                .filter(cData => cData["Course Number"].includes(num.toString().toUpperCase()))
+            }
+        } else {
+            selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department))
+                .filter(cData => cData["Course Number"] == num.toString().toUpperCase())
+                .filter(cData => cData["Course Title"].includes(name));
+            if (selectedClass.length == 0) {
+                // Possible that the class name was typed wrong; try again with just the course number
+                console.log("Invalid name; trying again with just the course number");
+                selectedClass = cData.filter(cData => cData["Course Prefix"].includes(department))
+                    .filter(cData => cData["Course Number"] == num.toString().toUpperCase());
+            }
+        }
+
     }
     if(selectedClass.length == 0) {
         // Still can't find anything? Just exit without making a chart and alert that nothing could be found
