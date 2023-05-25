@@ -60,7 +60,22 @@ async function PapaParse(department, num, name, sem, unique) {
             break;
         case 'f2021':
             url = 'https://derec4.github.io/ut-grade-data/2021%20Fall.json';
-            break;          
+            break;
+        case 's2021':
+            url = 'https://derec4.github.io/ut-grade-data/2021%20Summer.json';
+            break;
+        case 'sp2021':
+            url = 'https://derec4.github.io/ut-grade-data/2021%20Spring.json';
+            break;    
+        case 'f2020':
+            url = 'https://derec4.github.io/ut-grade-data/2020%20Fall.json';
+            break;    
+        case 's2020':
+            url = 'https://derec4.github.io/ut-grade-data/2020%20Summer.json';
+            break;
+        case 'sp2020':
+            url = 'https://derec4.github.io/ut-grade-data/2020%20Spring.json';  
+            break;
         default:
             url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
             break;
