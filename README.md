@@ -14,6 +14,6 @@ Bored in VAPA one day, I noticed popular sites like Catalyst and UT Registration
 
 Using the site is simple, just input the necessary data and voila!
 
-![image](https://user-images.githubusercontent.com/53978637/233871547-cabbbf4c-b09d-46ed-a9b2-8193b4d73f4c.png)
+![image](https://user-images.githubusercontent.com/53978637/236986082-f02b2b29-af09-4a39-afff-da425c550073.png)
 
 Report bugs plz cuz I made this in a few days 
