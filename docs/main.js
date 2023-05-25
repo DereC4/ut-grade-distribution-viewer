@@ -55,7 +55,6 @@ async function PapaParse(department, num, name, sem, unique) {
             url = 'https://derec4.github.io/ut-grade-data/2022%20Summer.json';
             break;
         case 'sp2022':
-            // Temp, change when other data sets are added
             url = 'https://derec4.github.io/ut-grade-data/2022%20Spring.json';
             break;
         case 'f2021':
