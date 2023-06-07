@@ -39,12 +39,13 @@ async function parseName() {
         return;
     }
     console.log(department, classNum.toString(), className.trim(), semester);
+    await PapaParse(department, classNum.toString(), className.trim(), semester);
 }
 
 /*
  Fetch the necessary database depending on semester and filter based on the input data
 */
-async function PapaParse(department, num, name, sem, unique) {
+async function PapaParse(department, num, name, sem) {
     let cData = '';
     let url = '';
     switch (sem) {
@@ -85,36 +86,32 @@ async function PapaParse(department, num, name, sem, unique) {
             cData = data;
         });
     let selectedClass = '';
-    if (unique) {
-        selectedClass = cData.filter(cData => cData['Section Number'] == unique);
-    } else {
-        if (sem.substring(0, 2) === 's2') {
-            console.log("Summer Semester Detected");
+    if (sem.substring(0, 2) === 's2') {
+        console.log("Summer Semester Detected");
+        selectedClass = cData.filter(cData => cData["Course Prefix"] == department)
+            .filter(cData => cData["Course Number"].includes(num.toString().toUpperCase()))
+            .filter(cData => cData["Course Title"].includes(name));
+        if (selectedClass.length == 0) {
+
+            // summer names are weird
+            console.log("Invalid name; trying again with just the course number");
             selectedClass = cData.filter(cData => cData["Course Prefix"] == department)
                 .filter(cData => cData["Course Number"].includes(num.toString().toUpperCase()))
-                .filter(cData => cData["Course Title"].includes(name));
-            if (selectedClass.length == 0) {
+        }
+    } else {
+        selectedClass = cData.filter(cData => cData["Course Prefix"] == department)
+            .filter(cData => cData["Course Number"] == num.toString().toUpperCase())
+            .filter(cData => cData["Course Title"].includes(name));
+        if (selectedClass.length == 0) {
 
-                // summer names are weird
-                console.log("Invalid name; trying again with just the course number");
-                selectedClass = cData.filter(cData => cData["Course Prefix"] == department)
-                    .filter(cData => cData["Course Number"].includes(num.toString().toUpperCase()))
-            }
-        } else {
+            // Possible that the class name was typed wrong; try again with just the course number
+            console.log("Invalid name; trying again with just the course number");
             selectedClass = cData.filter(cData => cData["Course Prefix"] == department)
-                .filter(cData => cData["Course Number"] == num.toString().toUpperCase())
-                .filter(cData => cData["Course Title"].includes(name));
-            if (selectedClass.length == 0) {
-
-                // Possible that the class name was typed wrong; try again with just the course number
-                console.log("Invalid name; trying again with just the course number");
-                selectedClass = cData.filter(cData => cData["Course Prefix"] == department)
-                    .filter(cData => cData["Course Number"] == num.toString().toUpperCase());
-            }
+                .filter(cData => cData["Course Number"] == num.toString().toUpperCase());
         }
     }
     if (selectedClass.length == 0) {
-        
+
         // Still can't find anything? Just exit without making a chart and alert that nothing could be found
         alert("No data found. Try again :(");
         return;
