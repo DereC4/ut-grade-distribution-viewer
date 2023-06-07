@@ -1,5 +1,4 @@
 const submitButton = document.getElementById('subBut');
-submitButton.addEventListener("click", parseName);
 const chartDiv = document.querySelector('#grades');
 const aboutDiv = document.querySelector('.about-text');
 const formDiv = document.querySelector('.bg-form');
@@ -10,6 +9,8 @@ var gradeChart;
 const ctx = document.getElementById("gradeBar");
 const gradeLabels = ["A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"];
 const backgroundColor = ["rgb(98, 244, 54)", "rgb(129, 231, 10)", "rgb(151, 218, 0)", "rgb(168, 204, 0)", "rgb(181, 190, 0)", "rgb(191, 176, 0)", "rgb(199, 162, 0)", "rgb(205, 148, 0)", "rgb(209, 133, 0)", "rgb(211, 119, 0)", "rgb(210, 105, 0)", "rgb(208, 91, 23)", "rgb(204, 78, 36)", "rgb(198, 66, 46)", "rgb(190, 54, 54)", ""];
+submitButton.addEventListener("click", parseName);
+
 /*
  Parse the input form and class data
 */
@@ -96,6 +97,7 @@ async function PapaParse(department, num, name, sem, unique) {
                 .filter(cData => cData["Course Number"].includes(num.toString().toUpperCase()))
                 .filter(cData => cData["Course Title"].includes(name));
             if (selectedClass.length == 0) {
+
                 // summer names are weird
                 console.log("Invalid name; trying again with just the course number");
                 selectedClass = cData.filter(cData => cData["Course Prefix"] == department)
@@ -106,6 +108,7 @@ async function PapaParse(department, num, name, sem, unique) {
                 .filter(cData => cData["Course Number"] == num.toString().toUpperCase())
                 .filter(cData => cData["Course Title"].includes(name));
             if (selectedClass.length == 0) {
+
                 // Possible that the class name was typed wrong; try again with just the course number
                 console.log("Invalid name; trying again with just the course number");
                 selectedClass = cData.filter(cData => cData["Course Prefix"] == department)
@@ -114,6 +117,7 @@ async function PapaParse(department, num, name, sem, unique) {
         }
     }
     if (selectedClass.length == 0) {
+        
         // Still can't find anything? Just exit without making a chart and alert that nothing could be found
         alert("No data found. Try again :(");
         return;
@@ -157,7 +161,6 @@ async function PapaParse(department, num, name, sem, unique) {
                 label: '\"' + lableName + "\"",
                 data: Object.values(gradeDist),
                 borderWidth: 2,
-                // borderColor: '#36A2EB',
                 backgroundColor: backgroundColor,
             }]
         };
