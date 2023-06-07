@@ -15,33 +15,30 @@ submitButton.addEventListener("click", parseName);
  Parse the input form and class data
 */
 async function parseName() {
-    let fiveDigit = document.getElementById('sectionNum').value;
+    // let fiveDigit = document.getElementById('sectionNum').value;
     let className = document.getElementById('courseName').value.toUpperCase();
     let classNum = document.getElementById('courseNum').value;
     let department = document.getElementById('courseField').value.trim().toUpperCase();
     let semester = document.getElementById('semester').value;
     let departments = '';
-    if (!fiveDigit) {
-        await fetch('https://derec4.github.io/ut-grade-data/2022prefixes.json')
-            .then(res => res.json())
-            .then(data => {
-                departments = data;
-            });
-        if (!className && !classNum && !department) {
-            alert("At least fill out the form...");
-            return;
-        }
-        if (!department || !classNum) {
-            alert("Missing fields")
-            return;
-        }
-        if (!departments.includes(department)) {
-            alert("Invalid Department");
-            return;
-        }
-        console.log(department, classNum.toString(), className.trim(), semester);
+    await fetch('https://derec4.github.io/ut-grade-data/2022prefixes.json')
+        .then(res => res.json())
+        .then(data => {
+            departments = data;
+        });
+    if (!className && !classNum && !department) {
+        alert("At least fill out the form...");
+        return;
     }
-    await PapaParse(department, classNum.toString(), className.trim(), semester, fiveDigit);
+    if (!department || !classNum) {
+        alert("Missing fields")
+        return;
+    }
+    if (!departments.includes(department)) {
+        alert("Invalid Department");
+        return;
+    }
+    console.log(department, classNum.toString(), className.trim(), semester);
 }
 
 /*
