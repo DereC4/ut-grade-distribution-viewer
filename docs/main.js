@@ -15,7 +15,6 @@ submitButton.addEventListener("click", parseName);
  Parse the input form and class data
 */
 async function parseName() {
-    // let fiveDigit = document.getElementById('sectionNum').value;
     let className = document.getElementById('courseName').value.toUpperCase();
     let classNum = document.getElementById('courseNum').value;
     let department = document.getElementById('courseField').value.trim().toUpperCase();
@@ -141,6 +140,7 @@ async function PapaParse(department, num, name, sem) {
         let cnt = selectedClass[i]["Count of letter grade"]
         gradeDist[letterGrade] += cnt;
         if (sameName && !(lableName === selectedClass[i]["Course Title"])) {
+            // We can reasonably expect that time stays in the 2000s for a few more years
             lableName = (sem.substring(0, 2) === 's2' ? "Remember, summer courses have special prefixes!" : "Multiple courses detected; try specifying a course name!");
             sameName = false;
         }
