@@ -5,21 +5,23 @@
     --p-size: 10px;
     --label-size: 10px;
     --h1-size: 15px;
+    --background-gradient: linear-gradient(90deg, rgba(61, 87, 92, 1) 0, #454454 100%);
+    --link-color: #2c82c9;
 }
 
 body {
     font-family: 'Helvetica Neue', sans-serif;
     background: #1b1a2a;
-    background: linear-gradient(90deg, rgba(61, 87, 92, 1) 0, #454454 100%);
+    background: var(--background-gradient);
 }
 
 a {
-    color: #2c82c9;
-    text-decoration: none
+    color: var(--link-color);
+    text-decoration: none;
 }
 
 main {
-    padding: 10%
+    padding: 10%;
 }
 
 footer {
@@ -31,7 +33,7 @@ footer {
     left: 0;
     width: 100%;
     text-align: left;
-    font-size: 1rem
+    font-size: 1rem;
 }
 
 * {
