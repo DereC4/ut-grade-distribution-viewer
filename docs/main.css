@@ -1,5 +1,5 @@
 :root {
-    /* Mobile */
+    /* Mobile - Default */
     --bg-form-padding: 3px;
     --about-text-padding: 3px;
     --p-size: 10px;
@@ -45,7 +45,6 @@ footer {
     text-align: center;
     color: #fff;
     /* background-color: rgba(0, 0, 0, .4); */
-
 }
 
 .about-text {
