@@ -46,7 +46,6 @@
       </p>
       <br>
       <form action="">
-  
         <!-- Data is separated into course number, course prefi;x, and course name-->
         <label for="courseField">Department (Ex: "MUS"):</label>
         <input type="text" id="courseField" name="fname" required><br><br>
@@ -54,11 +53,12 @@
         <input type="text" id="courseNum" name="fname" required><br><br>
         <label for="courseName">Course Name (Optional, for same-number classes Ex: UGS 303):</label>
         <input type="text" id="courseName" name="fname"><br><br>
+
         <!-- <label for="sectionNum">Section Number (Optional, Experimental)</label>
         <input type="text" id="sectionNum" name="fname" required><br><br> -->
         <!-- <label for="courseInstructor">Instructor (Optional):</label>
         <input type="text" id="courseInstructor" name="fname"><br><br> -->
-  
+
         <!-- Dropdown menu for semester selection -->
         <form>
           <label for="dropdown">Semester:</label>
@@ -78,7 +78,6 @@
         <button type="button" id="subBut">Submit</button><br><br>
       </form>
       <div class="chart-container" id="grades" value="invisible" style="position: relative; height:40vh; width:80vw">
-        
         <!--Bar graph stuff-->
         <canvas id="gradeBar" style="width:100%;height:100%;"></canvas>
       </div>
@@ -89,13 +88,8 @@
         src="https://ghbtns.com/github-btn.html?user=Derec4&repo=ut-grade-distribution-viewer&type=star&count=true&size=large"
         frameborder="0" scrolling="0" width="170" height="30" title="GitHub">
       </iframe>
-      <!-- <iframe src="https://ghbtns.com/github-btn.html?user=DereC4&type=follow&count=true&size=large" frameborder="0"
-        scrolling="0" width="170" height="30" title="GitHub">
-      </iframe> -->
     </footer>
   </div>
-
-
   <script src='main.js'></script>
 </body>
 
