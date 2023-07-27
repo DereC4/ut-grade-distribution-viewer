@@ -1,6 +1,7 @@
 :root {
+    /* Mobile */
     --bg-form-padding: 3px;
-    --form-padding: 3px;
+    --about-text-padding: 3px;
     --p-size: 10px;
     --label-size: 10px;
     --h1-size: 15px;
@@ -55,6 +56,7 @@ footer {
     width: 70%;
     margin: 0 auto;
     border-radius: 10px;
+    padding: var(--about-text-padding);
 }
 
 .bg-form {
@@ -67,6 +69,7 @@ footer {
     height: auto;
     margin: 0 auto;
     border-radius: 10px;
+    padding: var(--bg-form-padding);
 }
 
 .chart-container {
@@ -74,15 +77,6 @@ footer {
     margin: auto;
     height: 80vh;
     width: 80vw;
-}
-
-/* Mobile */
-.bg-form {
-    padding: 3px;
-}
-
-.about-text {
-    padding: 3px;
 }
 
 p {
@@ -102,49 +96,26 @@ h1 {
 
 /* Tablet */
 @media (min-width:600px) {
-    :root {}
-
-    .bg-form {
-        padding: 15px;
-    }
-
-    .about-text {
-        padding: 10px;
-    }
-
-    p {
-        font-size: 14px;
-    }
-
-    label {
-        font-size: 14px;
-    }
-
-    h1 {
-        font-size: 18px;
+    :root {
+        --bg-form-padding: 15px;
+        --about-text-padding: 10px;
+        --p-size: 14px;
+        --label-size: 14px;
+        --h1-size: 18px;
     }
 }
 
 /* Desktop */
 @media (min-width:900px) {
-    .bg-form {
-        padding: 24px;
-    }
-
-    .about-text {
-        padding: 12px;
-    }
-
-    p {
-        font-size: 16px;
-    }
-
-    label {
-        font-size: 18px;
+    :root {
+        --bg-form-padding: 24px;
+        --about-text-padding: 12px;
+        --p-size: 16px;
+        --label-size: 18px;
+        --h1-size: 30px;
     }
 
     h1 {
-        font-size: 30px;
         margin: 0 0 1rem 0
-    }
+    } 
 }
