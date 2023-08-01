@@ -125,27 +125,23 @@ async function PapaParse(department, num, name, sem) {
         // console.log(selectedClass[i]["Count of letter grade"]);
     }
     console.log(gradeDist);
-    if (gradeChart) {
-        gradeChart.config.data = {
-            labels: gradeLabels,
-            datasets: [{
-                label: '\"' + lableName + "\"",
-                data: Object.values(gradeDist),
-                borderWidth: 2,
-                backgroundColor: backgroundColor,
-            }]
-        };
-        gradeChart.update();
-    } else {
-        loadChart(gradeDist, lableName);
-        aboutDiv.style.visibility = 'hidden';
-        aboutDiv.style.display = 'none';
-        chartDiv.style.display = '';
-        formDiv.setAttribute("style", "grid-row: 1");
-    }
+    (gradeChart ? updateChart(lableName, gradeDist) : createChart(gradeDist, lableName));
 }
 
-function loadChart(gradeDist, courseName) {
+function updateChart(labelName, gradeDist) {
+    gradeChart.config.data = {
+        labels: gradeLabels,
+        datasets: [{
+            label: '\"' + labelName + "\"",
+            data: Object.values(gradeDist),
+            borderWidth: 2,
+            backgroundColor: backgroundColor,
+        }]
+    };
+    gradeChart.update();
+}
+
+function createChart(gradeDist, courseName) {
     gradeChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -181,4 +177,8 @@ function loadChart(gradeDist, courseName) {
             }
         }
     });
+    aboutDiv.style.visibility = 'hidden';
+    aboutDiv.style.display = 'none';
+    chartDiv.style.display = '';
+    formDiv.setAttribute("style", "grid-row: 1");
 }
