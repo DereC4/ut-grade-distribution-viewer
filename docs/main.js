@@ -115,7 +115,7 @@ async function PapaParse(department, num, name, sem) {
         let letterGrade = selectedClass[i]["Letter Grade"];
         let cnt = selectedClass[i]["Count of letter grade"];
         gradeDist[letterGrade] += cnt;
-        if (sameName && !(lableName === selectedClass[i]["Course Title"])) {
+        if (sameName && lableName !== selectedClass[i]["Course Title"]) {
             // We can reasonably expect that time stays in the 2000s for a few more years
             lableName = (sem.substring(0, 2) === 's2' ? "Remember, summer courses have special prefixes!" : "Multiple courses detected; try specifying a course name!");
             sameName = false;
