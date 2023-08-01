@@ -48,53 +48,33 @@ async function parseName() {
  * Displays an alert if nothing could be found.
  */
 async function PapaParse(department, num, name, sem) {
-    let cData = '';
-    let url = '';
-    switch (sem) {
-        case 'f2022':
-            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
-            break;
-        case 's2022':
-            url = 'https://derec4.github.io/ut-grade-data/2022%20Summer.json';
-            break;
-        case 'sp2022':
-            url = 'https://derec4.github.io/ut-grade-data/2022%20Spring.json';
-            break;
-        case 'f2021':
-            url = 'https://derec4.github.io/ut-grade-data/2021%20Fall.json';
-            break;
-        case 's2021':
-            url = 'https://derec4.github.io/ut-grade-data/2021%20Summer.json';
-            break;
-        case 'sp2021':
-            url = 'https://derec4.github.io/ut-grade-data/2021%20Spring.json';
-            break;
-        case 'f2020':
-            url = 'https://derec4.github.io/ut-grade-data/2020%20Fall.json';
-            break;
-        case 's2020':
-            url = 'https://derec4.github.io/ut-grade-data/2020%20Summer.json';
-            break;
-        case 'sp2020':
-            url = 'https://derec4.github.io/ut-grade-data/2020%20Spring.json';
-            break;
-        default:
-            url = 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
-            break;
-    }
-    await fetch(url)
-        .then(res => res.json())
-        .then(data => {
-            cData = data;
-        });
+    const semesterURLs = {
+        'f2022': 'https://derec4.github.io/ut-grade-data/2022%20Fall.json',
+        's2022': 'https://derec4.github.io/ut-grade-data/2022%20Summer.json',
+        'sp2022': 'https://derec4.github.io/ut-grade-data/2022%20Spring.json',
+        'f2021': 'https://derec4.github.io/ut-grade-data/2021%20Fall.json',
+        's2021': 'https://derec4.github.io/ut-grade-data/2021%20Summer.json',
+        'sp2021': 'https://derec4.github.io/ut-grade-data/2021%20Spring.json',
+        'f2020': 'https://derec4.github.io/ut-grade-data/2020%20Fall.json',
+        's2020': 'https://derec4.github.io/ut-grade-data/2020%20Summer.json',
+        'sp2020': 'https://derec4.github.io/ut-grade-data/2020%20Spring.json',
+    };    
+
+    //Update to an array of URL options instead of a lengthy switch statement for readability
+    const url = semesterURLs[sem] || 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
+    const response = await fetch(url);
+    const cData = await response.json();
     let selectedClass = '';
     if (sem.substring(0, 2) === 's2') {
+        /**
+         * Summer names are really weird but we can safely assume the prefix of the semester
+         * will not become "s3" within the next lifetime
+         */
         console.log("Summer Semester Detected");
         selectedClass = cData.filter(cData => cData["Course Prefix"] == department)
             .filter(cData => cData["Course Number"].includes(num.toString().toUpperCase()))
             .filter(cData => cData["Course Title"].includes(name));
         if (selectedClass.length == 0) {
-            // summer names are weird
             console.log("Invalid name; trying again with just the course number");
             selectedClass = cData.filter(cData => cData["Course Prefix"] == department)
                 .filter(cData => cData["Course Number"].includes(num.toString().toUpperCase()))
