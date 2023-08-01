@@ -128,6 +128,9 @@ async function PapaParse(department, num, name, sem) {
     (gradeChart ? updateChart(lableName, gradeDist) : createChart(gradeDist, lableName));
 }
 
+/**
+ * If the chart is in a state of existence, we update the data values
+ */
 function updateChart(labelName, gradeDist) {
     gradeChart.config.data = {
         labels: gradeLabels,
@@ -141,6 +144,10 @@ function updateChart(labelName, gradeDist) {
     gradeChart.update();
 }
 
+/**
+ * If the chart is nowhere to be found, we load a new chart, its attributes and the values
+ * Then, make the chart visible on screen
+ */
 function createChart(gradeDist, courseName) {
     gradeChart = new Chart(ctx, {
         type: 'bar',
