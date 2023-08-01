@@ -64,34 +64,30 @@ async function PapaParse(department, num, name, sem) {
     const url = semesterURLs[sem] || 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
     const response = await fetch(url);
     const cData = await response.json();
-    let selectedClass = '';
+    let selectedClass = cData.filter(cData => cData["Course Prefix"] == department);
+
     if (sem.substring(0, 2) === 's2') {
         /**
          * Summer names are really weird but we can safely assume the prefix of the semester
          * will not become "s3" within the next lifetime
          */
         console.log("Summer Semester Detected");
-        selectedClass = cData.filter(cData => cData["Course Prefix"] == department)
-            .filter(cData => cData["Course Number"].includes(num.toString().toUpperCase()))
-            .filter(cData => cData["Course Title"].includes(name));
+        selectedClass = selectedClass.filter(cData => cData["Course Number"].includes(num.toString().toUpperCase())).filter(cData => cData["Course Title"].includes(name));
         if (selectedClass.length == 0) {
-            console.log("Invalid name; trying again with just the course number");
             selectedClass = cData.filter(cData => cData["Course Prefix"] == department)
-                .filter(cData => cData["Course Number"].includes(num.toString().toUpperCase()))
+                                 .filter(cData => cData["Course Number"].includes(num.toString().toUpperCase()))
         }
     } else {
-        selectedClass = cData.filter(cData => cData["Course Prefix"] == department)
-            .filter(cData => cData["Course Number"] == num.toString().toUpperCase())
-            .filter(cData => cData["Course Title"].includes(name));
+        selectedClass = selectedClass.filter(cData => cData["Course Number"] == num.toString().toUpperCase()).filter(cData => cData["Course Title"].includes(name));
         if (selectedClass.length == 0) {
             // Possible that the class name was typed wrong; try again with just the course number
-            console.log("Invalid name; trying again with just the course number");
+            console.log("Trying again with just the course number");
             selectedClass = cData.filter(cData => cData["Course Prefix"] == department)
-                .filter(cData => cData["Course Number"] == num.toString().toUpperCase());
+                                 .filter(cData => cData["Course Number"] == num.toString().toUpperCase());
         }
     }
     if (selectedClass.length == 0) {
-        // Still can't find anything? Just exit without making a chart and alert that nothing could be found
+        // Still can't find anything? Exit without a chart and alert
         alert("No data found. Try again :(");
         return;
     }
@@ -117,7 +113,7 @@ async function PapaParse(department, num, name, sem) {
     let sameName = true;
     for (i in selectedClass) {
         let letterGrade = selectedClass[i]["Letter Grade"];
-        let cnt = selectedClass[i]["Count of letter grade"]
+        let cnt = selectedClass[i]["Count of letter grade"];
         gradeDist[letterGrade] += cnt;
         if (sameName && !(lableName === selectedClass[i]["Course Title"])) {
             // We can reasonably expect that time stays in the 2000s for a few more years
