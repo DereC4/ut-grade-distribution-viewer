@@ -2,9 +2,10 @@
     /* Mobile - Default */
     --bg-form-padding: 3px;
     --about-text-padding: 3px;
-    --p-size: 10px;
-    --label-size: 10px;
-    --h1-size: 15px;
+    --p-size: 12px;
+    --label-size: 12px;
+    --h1-size: 16px;
+    --footer-size: 10px;
     --background-gradient: linear-gradient(90deg, rgba(61, 87, 92, 1) 0, #454454 100%);
     --link-color: #2c82c9;
 }
@@ -33,7 +34,10 @@ footer {
     left: 0;
     width: 100%;
     text-align: left;
-    font-size: 1rem;
+    font-size: var(--footer-size);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 * {
@@ -103,6 +107,7 @@ h1 {
         --p-size: 14px;
         --label-size: 14px;
         --h1-size: 18px;
+        --footer-size: 15px;
     }
 }
 
@@ -114,5 +119,6 @@ h1 {
         --p-size: 16px;
         --label-size: 18px;
         --h1-size: 30px;
+        --footer-size: 18px;
     }
 }
