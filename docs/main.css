@@ -53,7 +53,7 @@ main {
     grid-auto-rows: minmax(100px, auto);
     text-align: center;
     color: #fff;
-    margin-top: 10px;
+    margin-top: 30px;
     min-height: 100vh;
     /* background-color: rgba(0, 0, 0, .4); */
 }
@@ -80,6 +80,7 @@ main {
     width: 70%;
     margin: 0 auto;
     border-radius: 10px;
+    height: fit-content;
     padding: var(--about-text-padding);
 }
 
@@ -90,12 +91,12 @@ main {
     grid-row: 2;
     font-weight: 400;
     width: auto;
-    height: auto;
     margin: 0 auto;
     border-radius: 10px;
     padding: var(--bg-form-padding);
     display: flex;
     flex-direction: column;
+    height: fit-content;
 }
 
 .chart-container {
