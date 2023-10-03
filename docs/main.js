@@ -11,6 +11,7 @@ submitButton.addEventListener("click", parseName);
 if (chartDiv.getAttribute('value') == 'invisible') {
     chartDiv.style.display = 'none';
 }
+Chart.defaults.global.defaultFontColor = "#F8F0E5";
 
 /**
  * Parse the input forms and determines if any fields are missing
@@ -164,7 +165,7 @@ function createChart(gradeDist, courseName) {
         options: {
             legend: {
                 labels: {
-                    fontColor: "#00FF59",
+                    fontColor: "#F8F0E5",
                     fontSize: 15
                 }
             },
