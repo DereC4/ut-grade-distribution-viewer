@@ -26,9 +26,9 @@ body {
 }
 
 body.dark {
-    --background-color: #FAF3F0;
-    --container-color: #ADC4CE;
-    /* --font-color: #000; */
+    --background-color: #ffcab0;
+    --container-color: #fdffcd;
+    --font-color: #484b6a;
     /* --background-gradient-webkit: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
     --background-gradient: linear-gradient(to right, #eef2f3, #8e9eab); */
 
@@ -45,7 +45,7 @@ main {
 
 .footy {
     background-color: #2e2d2d;
-    color: var(--font-color);
+    color: white;
     padding: 1%;
     position: relative;
     bottom: 0;
