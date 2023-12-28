@@ -166,7 +166,6 @@ function createChart(gradeDist, courseName) {
         options: {
             legend: {
                 labels: {
-                    fontColor: "#F8F0E5",
                     fontSize: 15
                 }
             },
