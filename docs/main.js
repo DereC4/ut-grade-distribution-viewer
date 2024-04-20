@@ -64,10 +64,6 @@ async function PapaParse(department, num, name, sem) {
         'sp2020': 'https://derec4.github.io/ut-grade-data/2020%20Spring.json',
     };    
 
-    if(sem == 'f2023') {
-        alert("Fall 2023 isn't fully released yet");
-    }
-
     //Update to an array of URL options instead of a lengthy switch statement for readability
     const url = semesterURLs[sem] || 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
     const response = await fetch(url);
