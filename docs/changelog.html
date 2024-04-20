@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Changelog - UT Austin Grade Distribution Viewer</title>
@@ -16,7 +15,13 @@
       content="UT, University of Texas at Austin, Grade viewer, grade distribution viewer, derex, grade distribution, ut austin"
     />
     <meta name="language" content="English" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"
+    >
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    </script>
     <style>
       @media screen and (max-width: 800px) {
         .leftcolumn,
@@ -97,5 +102,7 @@
       >
       </iframe>
     </div>
+    <script src="main.js"></script>
+    <script src="colorScheme.js"></script>
   </body>
 </html>
