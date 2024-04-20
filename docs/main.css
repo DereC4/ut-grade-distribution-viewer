@@ -177,7 +177,7 @@ h1 {
 }
 
 .default-card {
-    background-color: white;
+    background-color: var(--container-color);
     padding: 20px;
     margin-top: 20px;
 }
