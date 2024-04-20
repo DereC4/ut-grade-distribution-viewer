@@ -23,6 +23,10 @@ body {
     background: var(--background-gradient); */
     margin: 0;
     transition: background 0.2s linear;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
 }
 
 body.dark {
@@ -43,20 +47,25 @@ main {
     padding: 10%;
 }
 
-.footy {
-    background-color: #2e2d2d;
-    color: white;
-    padding: 1%;
-    position: relative;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: left;
-    font-size: var(--footer-size);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-self: flex-end;
+nav ul {
+    font-size: var(--p-size);
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
 }
 
 * {
@@ -64,13 +73,18 @@ main {
 }
 
 .wrapper {
-    display: grid;
+    /* display: grid;
     gap: 2vw;
-    grid-auto-rows: minmax(100px, auto);
+    grid-auto-rows: minmax(100px, auto); */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    flex-grow: 1; /* Allow .wrapper to grow and occupy remaining space */
+    row-gap: 100px;
     text-align: center;
     color: var(--font-color);
     margin-top: 30px;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     /* background-color: rgba(0, 0, 0, .4); */
 }
 
@@ -101,8 +115,8 @@ main {
 
 .bg-form {
     background-color: var(--container-color);
-    grid-column: 1;
-    grid-row: 2;
+    /* grid-column: 1;
+    grid-row: 2; */
     font-weight: 400;
     width: auto;
     margin: 0 auto;
@@ -118,6 +132,25 @@ main {
     margin: auto;
     height: 80vh;
     width: 80vw;
+}
+
+
+.footy {
+    background-color: #2e2d2d;
+    color: white;
+    padding: 1%;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    font-size: var(--footer-size);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* margin-top: -200px; */
+    align-self: flex-end;
+    flex-shrink: 0;
 }
 
 p {
