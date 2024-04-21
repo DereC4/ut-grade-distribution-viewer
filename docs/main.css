@@ -219,8 +219,9 @@ h1 {
 }
 
 .image-container {
-    width: 100%;
+    width: 80%;
     max-width: fit-content;
+    min-width: 200px;
     margin: 0 auto;
     margin-bottom: 10px;
     overflow: hidden;
@@ -234,6 +235,13 @@ h1 {
     display: block;
     transition: transform 0.3s ease;
 }
+
+.iframe-container {
+    width: 100%;
+    overflow: auto; /* Enable scrolling when content overflows */
+    max-width: 600px; /* Set maximum width to match iframe width */
+    margin: 0 auto; /* Center the container horizontally */
+  }
 
 .fa:hover {
     opacity: 0.9;
