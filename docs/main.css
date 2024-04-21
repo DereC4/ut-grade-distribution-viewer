@@ -99,6 +99,11 @@ nav ul li a:hover {
     text-align: center;
     color: var(--font-color);
     margin-top: 30px;
+
+    .about-text {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
 }
 
 .submit-button {
