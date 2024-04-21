@@ -196,6 +196,7 @@ h1 {
     background-color: var(--container-color);
     padding: 20px;
     margin-top: 20px;
+    text-align: left;
 }
 
 .changelog-split-row {
