@@ -206,6 +206,15 @@ h1 {
     gap: 10px;
 }
 
+.top-left {
+    position: fixed;
+    top: 10px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .checkbox {
     opacity: 0;
     position: absolute;
