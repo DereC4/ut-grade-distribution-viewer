@@ -171,6 +171,15 @@ nav ul li a:hover {
     flex-shrink: 0;
 }
 
+.footy-interior {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+}
+
 p {
     font-size: var(--p-size);
     line-height: 1.5;
