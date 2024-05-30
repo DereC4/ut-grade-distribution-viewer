@@ -131,6 +131,10 @@ nav ul li a:hover {
     padding: var(--about-text-padding);
 }
 
+.changelog {
+    max-width: 800px;
+}
+
 .bg-form {
     background-color: var(--container-color);
     /* grid-column: 1;
@@ -206,6 +210,8 @@ h1 {
     padding: 20px;
     margin-top: 20px;
     text-align: left;
+    text-wrap: wrap;
+    max-width: 800px;
 }
 
 .changelog-split-row {
@@ -213,6 +219,7 @@ h1 {
     display: flex;
     flex-direction: row;
     gap: 10px;
+    /* margin: 0 auto; */
 }
 
 .top-left {
