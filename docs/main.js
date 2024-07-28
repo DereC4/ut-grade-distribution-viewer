@@ -22,25 +22,31 @@ async function parseName() {
     let department = document.getElementById('courseField').value.trim().toUpperCase();
     let departmentList = '';
     let semester = document.getElementById('semester').value;
+    let instructor = document.getElementById('courseInstructor').value;
+
     await fetch('https://derec4.github.io/ut-grade-data/2022prefixes.json')
         .then(res => res.json())
         .then(data => {
             departmentList = data;
         });
+
     if (!className && !classNum && !department) {
         alert("At least fill out the form...");
         return;
     }
+
     if (!department || !classNum) {
         alert("Missing fields")
         return;
     }
+
     if (!departmentList.includes(department)) {
         alert("Invalid Department");
         return;
     }
-    console.log(department, classNum.toString(), className.trim(), semester);
-    await PapaParse(department, classNum.toString(), className.trim(), semester);
+
+    console.log(department, classNum.toString(), className.trim(), instructor.trim(), semester);
+    await PapaParse(department, classNum.toString(), className.trim(), instructor.trim(), semester);
 }
 
 /**
@@ -48,7 +54,7 @@ async function parseName() {
  * Then, filter through the table based on the input data to get grade info for the class.
  * Displays an alert if nothing could be found.
  */
-async function PapaParse(department, num, name, sem) {
+async function PapaParse(department, num, name, instructor, sem) {
     const semesterURLs = {
         'sp2024': 'https://derec4.github.io/ut-grade-data/2024%20Spring.json',
         'f2023': 'https://derec4.github.io/ut-grade-data/2023%20Fall.json',
@@ -71,10 +77,25 @@ async function PapaParse(department, num, name, sem) {
     const cData = await response.json();
     let selectedClass = cData.filter(cData => cData["Course Prefix"] == department);
 
+    const altUrl = new URL('https://ut-grade-data.vercel.app/v2/query');
+    const params = {
+        department: department,
+        sem: sem,
+        num: num,
+        professor: instructor
+    };
+
+    Object.keys(params).forEach(key => {
+        if (params[key]) {
+            url.searchParams.append(key, params[key]);
+        }
+    });
+
+    // temp code below
     const url2 = 'https://ut-grade-data.vercel.app/v2/query?department=Computer Science&sem=Fall 2023&num=439&professor=Norman';
 
     try {
-        const response = await fetch(url2);
+        const response = await fetch(altUrl);
         const data = await response.json();
         
         if (data.length === 0) {
@@ -83,11 +104,10 @@ async function PapaParse(department, num, name, sem) {
         } 
 
         console.log(data);
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        alert("An error occurred while fetching data. Please try again.");
     }
-        catch (error) {
-            console.error("Error fetching data:", error);
-            alert("An error occurred while fetching data. Please try again.");
-        }
 
     if (sem.substring(0, 2) === 's2') {
         /**
