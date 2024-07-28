@@ -50,6 +50,7 @@ async function parseName() {
  */
 async function PapaParse(department, num, name, sem) {
     const semesterURLs = {
+        'sp2024': 'https://derec4.github.io/ut-grade-data/2024%20Spring.json',
         'f2023': 'https://derec4.github.io/ut-grade-data/2023%20Fall.json',
         's2023': 'https://derec4.github.io/ut-grade-data/2023%20Summer.json',
         'sp2023': 'https://derec4.github.io/ut-grade-data/2023%20Spring.json',
@@ -69,6 +70,24 @@ async function PapaParse(department, num, name, sem) {
     const response = await fetch(url);
     const cData = await response.json();
     let selectedClass = cData.filter(cData => cData["Course Prefix"] == department);
+
+    const url2 = 'https://ut-grade-data.vercel.app/v2/query?department=Computer Science&sem=Fall 2023&num=439&professor=Norman';
+
+    try {
+        const response = await fetch(url2);
+        const data = await response.json();
+        
+        if (data.length === 0) {
+            alert("No data found. Try again :(");
+            return;
+        } 
+
+        console.log(data);
+    }
+        catch (error) {
+            console.error("Error fetching data:", error);
+            alert("An error occurred while fetching data. Please try again.");
+        }
 
     if (sem.substring(0, 2) === 's2') {
         /**
