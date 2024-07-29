@@ -85,11 +85,11 @@ async function PapaParse(department, num, name, instructor, sem) {
         professor: instructor
     };
 
-    Object.keys(params).forEach(key => {
-        if (params[key]) {
-            url.searchParams.append(key, params[key]);
-        }
-    });
+    // Object.keys(params).forEach(key => {
+    //     if (params[key]) {
+    //         url.searchParams.append(key, params[key]);
+    //     }
+    // });
 
     // temp code below
     const url2 = 'https://ut-grade-data.vercel.app/v2/query?department=Computer Science&sem=Fall 2023&num=439&professor=Norman';
