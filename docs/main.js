@@ -94,20 +94,20 @@ async function PapaParse(department, num, name, instructor, sem) {
     // temp code below
     const url2 = 'https://ut-grade-data.vercel.app/v2/query?department=Computer Science&sem=Fall 2023&num=439&professor=Norman';
 
-    try {
-        const response = await fetch(altUrl);
-        const data = await response.json();
+    // try {
+    //     const response = await fetch(altUrl);
+    //     const data = await response.json();
         
-        if (data.length === 0) {
-            alert("No data found. Try again :(");
-            return;
-        } 
+    //     if (data.length === 0) {
+    //         alert("No data found. Try again :(");
+    //         return;
+    //     } 
 
-        console.log(data);
-    } catch (error) {
-        console.error("Error fetching data:", error);
-        alert("An error occurred while fetching data. Please try again.");
-    }
+    //     console.log(data);
+    // } catch (error) {
+    //     console.error("Error fetching data:", error);
+    //     alert("An error occurred while fetching data. Please try again.");
+    // }
 
     if (sem.substring(0, 2) === 's2') {
         /**
