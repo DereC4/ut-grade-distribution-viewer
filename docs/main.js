@@ -13,6 +13,17 @@ if (chartDiv.getAttribute('value') == 'invisible') {
 }
 Chart.defaults.global.defaultFontColor = "#F8F0E5";
 
+let gradeMapping = {
+    "A_Plus": "A",
+    "A_Minus": "A-",
+    "B_Plus": "B+",
+    "B_Minus": "B-",
+    "C_Plus": "C+",
+    "C_Minus": "C-",
+    "D_Plus": "D+",
+    "D_Minus": "D-"
+};
+
 /**
  * Parse the input forms and determines if any fields are missing
  */
@@ -74,42 +85,44 @@ async function PapaParse(department, num, name, instructor, sem) {
     //Update to an array of URL options instead of a lengthy switch statement for readability
     const url = semesterURLs[sem] || 'https://derec4.github.io/ut-grade-data/2022%20Fall.json';
     const response = await fetch(url);
-    const cData = await response.json();
+    let cData = await response.json();
     let selectedClass = cData.filter(cData => cData["Course Prefix"] == department);
+    let usingExperimental = false;
 
-    const altUrl = new URL('https://ut-grade-data.vercel.app/v2/query');
-    const params = {
+    if (instructor) {
+      const altUrl = new URL("https://ut-grade-data.vercel.app/v2/query");
+      const params = {
         department: department,
         sem: sem,
         num: num,
-        professor: instructor
-    };
+        professor: instructor,
+      };
 
-    // Object.keys(params).forEach(key => {
-    //     if (params[key]) {
-    //         url.searchParams.append(key, params[key]);
-    //     }
-    // });
+      Object.keys(params).forEach((key) => {
+        if (params[key]) {
+          altUrl.searchParams.append(key, params[key]);
+        }
+      });
 
-    // temp code below
-    const url2 = 'https://ut-grade-data.vercel.app/v2/query?department=Computer Science&sem=Fall 2023&num=439&professor=Norman';
+      console.log(altUrl);
 
-    // try {
-    //     const response = await fetch(altUrl);
-    //     const data = await response.json();
+      try {
+        const response = await fetch(altUrl);
+        const data = await response.json();
+
+        if (data.length === 0) {
+          console.error("Error executing query :((( :", error);
+          return;
+        }
         
-    //     if (data.length === 0) {
-    //         alert("No data found. Try again :(");
-    //         return;
-    //     } 
+        selectedClass = data;
+        usingExperimental = true;
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
 
-    //     console.log(data);
-    // } catch (error) {
-    //     console.error("Error fetching data:", error);
-    //     alert("An error occurred while fetching data. Please try again.");
-    // }
-
-    if (sem.substring(0, 2) === 's2') {
+    if (!usingExperimental && sem.substring(0, 2) === 's2') {
         /**
          * Summer names are really weird but we can safely assume the prefix of the semester
          * will not become "s3" within the next lifetime
@@ -120,7 +133,7 @@ async function PapaParse(department, num, name, instructor, sem) {
             selectedClass = cData.filter(cData => cData["Course Prefix"] == department)
                                  .filter(cData => cData["Course Number"].includes(num.toString().toUpperCase()))
         }
-    } else {
+    } else if (!usingExperimental) {
         selectedClass = selectedClass.filter(cData => cData["Course Number"] == num.toString().toUpperCase()).filter(cData => cData["Course Title"].includes(name));
         if (selectedClass.length == 0) {
             // Possible that the class name was typed wrong; try again with just the course number
@@ -152,23 +165,34 @@ async function PapaParse(department, num, name, instructor, sem) {
         'Other': 0
     };
 
-    let lableName = selectedClass[0]["Course Title"];
-    let sameName = true;
-    for (i in selectedClass) {
-        let letterGrade = selectedClass[i]["Letter Grade"];
-        let cnt = selectedClass[i]["Count of letter grade"];
-        gradeDist[letterGrade] += cnt;
-        if (sameName && lableName !== selectedClass[i]["Course Title"]) {
-            // We can reasonably expect that time stays in the 2000s for a few more years
-            lableName = (sem.substring(0, 2) === 's2' ? "Remember, summer courses have special prefixes!" : "Multiple courses detected; try specifying a course name!");
-            sameName = false;
-        }
+    let lableName = usingExperimental ? selectedClass[0]["Course_Title"] : selectedClass[0]["Course Title"];
 
-        // console.log(selectedClass[i]["Letter Grade"]);
-        // console.log(selectedClass[i]["Count of letter grade"]);
+    if (usingExperimental) {
+        for (let classObj of selectedClass) {
+            updateGradeDist(classObj, gradeDist);
+        }
+        console.log(gradeDist);
+        (gradeChart ? updateChart(lableName, gradeDist) : createChart(gradeDist, lableName));
+    } else {
+        let sameName = true;
+        for (i in selectedClass) {
+            let letterGrade = selectedClass[i]["Letter Grade"];
+            let cnt = selectedClass[i]["Count of letter grade"];
+            gradeDist[letterGrade] += cnt;
+            if (sameName && lableName !== selectedClass[i]["Course Title"]) {
+                // We can reasonably expect that time stays in the 2000s for a few more years
+                lableName = (sem.substring(0, 2) === 's2' ? "Remember, summer courses have special prefixes!" : "Multiple courses detected; try specifying a course name!");
+                sameName = false;
+            }
+    
+            // console.log(selectedClass[i]["Letter Grade"]);
+            // console.log(selectedClass[i]["Count of letter grade"]);
+        }
+        console.log(gradeDist);
+        (gradeChart ? updateChart(lableName, gradeDist) : createChart(gradeDist, lableName));
     }
-    console.log(gradeDist);
-    (gradeChart ? updateChart(lableName, gradeDist) : createChart(gradeDist, lableName));
+
+
 }
 
 /**
@@ -230,4 +254,13 @@ function createChart(gradeDist, courseName) {
     aboutDiv.style.display = 'none';
     chartDiv.style.display = '';
     formDiv.setAttribute("style", "grid-row: 1");
+}
+
+function updateGradeDist(classObj, gradeDist) {
+    for (let key in classObj) {
+        if (key in gradeDist || key in gradeMapping) {
+            let normalizedKey = gradeMapping[key] || key;
+            gradeDist[normalizedKey] += classObj[key];
+        }
+    }
 }
