@@ -112,11 +112,10 @@ async function PapaParse(department, num, name, instructor, sem) {
 
         if (data.length === 0) {
           console.error("Error executing query :((( :");
-          return;
+        } else {
+            selectedClass = data;
+            usingExperimental = true;
         }
-        
-        selectedClass = data;
-        usingExperimental = true;
       } catch (error) {
         console.error("Error fetching data:");
       }
