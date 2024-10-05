@@ -386,6 +386,10 @@ h1 {
     transform: translateX(24px);
 }
 
+/* form {
+    text-align: right;
+} */
+
 /* Tablet */
 @media (min-width:600px) {
     :root {
