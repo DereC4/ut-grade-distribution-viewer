@@ -1,4 +1,4 @@
-## How do I access the website?
+## How do I access the site?
 
 https://derec4.github.io/ut-grade-distribution-viewer/
 
