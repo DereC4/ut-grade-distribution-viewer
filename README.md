@@ -1,3 +1,6 @@
+
+![UTAustinGradeDistributionViewerand4morepages-Personal-MicrosoftEdge2024-10-0618-20-14-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/e49d82fa-2184-4610-8e10-bead266e8894)
+
 ## How do I access the site?
 
 https://derec4.github.io/ut-grade-distribution-viewer/
