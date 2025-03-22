@@ -20,3 +20,5 @@ Using the site is simple, just input the necessary data and voila!
 ![image](https://user-images.githubusercontent.com/53978637/236986082-f02b2b29-af09-4a39-afff-da425c550073.png)
 
 Report bugs plz cuz I made this in a few days 
+
+By _DereC4 or DereC_ or derexd or derex or whatever i'm calling myself these days_
