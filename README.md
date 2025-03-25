@@ -21,4 +21,6 @@ Using the site is simple, just input the necessary data and voila!
 
 Report bugs plz cuz I made this in a few days 
 
-By _DereC4 or DereC_ or derexd or derex or whatever i'm calling myself these days_
+By derex_ or derec4 or derexxd or derexd or DereC_ or CORRUPT_Greninja or lordnexus123 or whatever my username is these days
+
+
