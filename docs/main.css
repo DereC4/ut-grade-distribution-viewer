@@ -188,6 +188,35 @@ opacity: 1;
     height: fit-content;
 }
 
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    text-align: center;
+    align-items: center;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: var(--p-size);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--link-color);
+}
+
 .chart-container {
     position: relative;
     margin: auto;

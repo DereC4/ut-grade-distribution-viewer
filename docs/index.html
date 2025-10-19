@@ -70,22 +70,33 @@
       <p>Course Name is optional, but used for duplicate ID courses (e.g. "UGS 303")</p>
       <br>
       <form action="">
-        <!-- Data is separated into course number, course prefi;x, and course name-->
-        <label for="courseField">Department (e.g. "MUS"):</label>
-        <input type="text" id="courseField" name="fname" required><br><br>
-        <label for="courseNum">Course Number (e.g. "307"):</label>
-        <input type="text" id="courseNum" name="fname" required><br><br>
-        <label for="courseName">Course Name (e.g. "JAZZ APPRECIATION-WB"):</label>
-        <input type="text" id="courseName" name="fname"><br><br>
+        <!-- Data is separated into course number, course prefix, and course name-->
+        <div class="form-group">
+          <label for="courseField">Department (e.g. "MUS"):</label>
+          <input type="text" id="courseField" name="fname" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="courseNum">Course Number (e.g. "307"):</label>
+          <input type="text" id="courseNum" name="fname" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="courseName">Course Name (e.g. "JAZZ APPRECIATION-WB"):</label>
+          <input type="text" id="courseName" name="fname">
+        </div>
 
         <!-- <label for="sectionNum">Section Number (Optional, Experimental)</label>
-        <input type="text" id="sectionNum" name="fname" required><br><br> -->
-        <label for="courseInstructor" title="This is an experimental option!">Instructor:</label>
-        <input type="text" id="courseInstructor" name="fname"><br><br>
+        <input type="text" id="sectionNum" name="fname" required> -->
+        
+        <div class="form-group">
+          <label for="courseInstructor" title="This is an experimental option!">Instructor:</label>
+          <input type="text" id="courseInstructor" name="fname">
+        </div>
 
         <!-- Dropdown menu for semester selection -->
-        <form>
-          <label for="dropdown">Semester:</label>
+        <div class="form-group">
+          <label for="semester">Semester:</label>
           <select id="semester" name="dropdown">
             <option value="f2024">Fall 2024</option>
             <option value="sp2024">Spring 2024</option>
@@ -102,9 +113,9 @@
             <option value="s2020">Summer 2020</option>
             <option value="sp2020">Spring 2020</option>
           </select>
-          <br><br>
-        </form>
-        <button type="button" id="subBut" class="submit-button">Submit</button><br><br>
+        </div>
+        
+        <button type="button" id="subBut" class="submit-button">Submit</button>
       </form>
       <div class="chart-container" id="grades" value="invisible" style="position: relative; height:40vh; width:80vw">
         <!--Bar graph stuff-->
