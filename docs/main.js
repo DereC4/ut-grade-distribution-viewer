@@ -67,6 +67,8 @@ async function parseName() {
  */
 async function PapaParse(department, num, name, instructor, sem) {
     const semesterURLs = {
+        's2025': 'https://derec4.github.io/ut-grade-data/2025%20Summer.json',
+        'sp2025': 'https://derec4.github.io/ut-grade-data/2025%20Spring.json',
         'f2024': 'https://derec4.github.io/ut-grade-data/2024%20Fall.json',
         'sp2024': 'https://derec4.github.io/ut-grade-data/2024%20Spring.json',
         'f2023': 'https://derec4.github.io/ut-grade-data/2023%20Fall.json',
