@@ -1,0 +1,32 @@
+name: Local AI Fun (Ollama)
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-ollama:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install and Start Ollama
+        run: |
+          curl -fsSL https://ollama.com/install.sh | sh
+          ollama serve &
+          sleep 10
+
+      - name: Pull Lightweight Model
+        run: ollama pull qwen2.5:0.5b
+
+      - name: Connect Figures and Fact-Check
+        run: |
+          echo "Generating historical connection and verifying..."
+          ollama run qwen2.5:0.5b "Choose two random, distinct historical figures from different time periods or regions. 
+          
+          First, connect them using the 'degrees of separation' or 'Wikipedia game' method. Write a detailed explanation linking them through a chain of historical events, shared acquaintances, or direct lineage, ensuring each link is explained clearly.
+          
+          Next, perform 3 separate, rigorous rounds of self-fact-checking. In each round, isolate one specific link or claim (like a meeting, date, or relationship) from your initial connection, explicitly state why it might be historically inaccurate or conflated, and evaluate its accuracy based on your internal knowledge."
